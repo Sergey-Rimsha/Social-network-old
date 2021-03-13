@@ -1,5 +1,8 @@
 import React from 'react';
 import style from './Profile.module.css';
+import Post from './Post/Post';
+import NewPost from './NewPost/NewPost';
+
 
 const Profile = () => {
     return (
@@ -18,19 +21,8 @@ const Profile = () => {
                     <div>Web Site: <span>Vk.com</span></div>
                 </div>
             </div>
-            <div className={style.newPost}>
-                <div>My Posts</div>
-                <div>
-                    <input type="text"/>
-                </div>
-                <div>
-                    <button>Send</button>
-                </div>
-            </div>
-            <div className={style.post}>
-                <img src="" alt='post user photo'></img>
-                <div className={style.postTxt}>Post_1</div>
-            </div>
+            <NewPost />
+            <Post />
         </div>
     )
 }

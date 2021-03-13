@@ -1,4 +1,3 @@
-
 .content {
     grid-area: content;
     background-color: #edb506;
@@ -26,29 +25,4 @@
 .userInfo {
     background-color:indigo;
     color: white;
-}
-
-
-.newPost {
-    margin-top: 15px;
-    background-color: grey;
-}
-
-.post {
-    display: flex;
-    margin-top: 15px;
-    background-color: grey;
-    height: 100px;
-    text-align: center;
-
-}
-
-.post img {
-    margin-top: 15px;
-    width: 40px;
-    height: 40px;
-}
-
-.postTxt {
-    margin: auto auto 40px 80px;
 }
