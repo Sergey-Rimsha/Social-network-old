@@ -1,0 +1,54 @@
+
+.content {
+    grid-area: content;
+    background-color: #edb506;
+    height: 100vh;
+}
+
+.content img {
+    width: 100vh;
+    height: 250px;
+}
+
+.userWrap {
+    margin-top: 15px;
+    display: flex;
+    background-color: gray;
+}
+
+.userPhoto {
+    margin-right: 15px;
+    background-color:hotpink;
+    width: 100px;
+    height: 100px;
+}
+
+.userInfo {
+    background-color:indigo;
+    color: white;
+}
+
+
+.newPost {
+    margin-top: 15px;
+    background-color: grey;
+}
+
+.post {
+    display: flex;
+    margin-top: 15px;
+    background-color: grey;
+    height: 100px;
+    text-align: center;
+
+}
+
+.post img {
+    margin-top: 15px;
+    width: 40px;
+    height: 40px;
+}
+
+.postTxt {
+    margin: auto auto 40px 80px;
+}
