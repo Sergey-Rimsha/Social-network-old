@@ -6,8 +6,8 @@ import NewPost from './NewPost/NewPost';
 
 const Profile = () => {
     return (
-        <div className={style.content}>
-            <div>
+        <div>
+            <div className={style.wrap}>
                 <img src="https://proprikol.ru/wp-content/uploads/2019/10/krasivye-kartinki-okeana-2.jpg" alt="img"></img>
             </div>
             <div className={style.userWrap}>

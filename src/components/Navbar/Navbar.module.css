@@ -2,4 +2,16 @@
     grid-area: nav;
     background-color: #77a2f7;
     height: 30vh;
-  }
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.sidebar a {
+    text-decoration: none;
+}
+
+
+
+.active {
+    color: gold;
+}
