@@ -1,18 +1,28 @@
 .post {
     display: flex;
     margin-top: 15px;
+    margin-left: 20px;
     background-color: grey;
     height: 100px;
     text-align: center;
 
 }
 
-.post img {
-    margin-top: 15px;
-    width: 40px;
-    height: 40px;
+.imgWrap {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 80px;
+    height: 100%;
 }
 
 .postTxt {
     margin: auto auto 40px 80px;
+}
+
+.wrapBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }

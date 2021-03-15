@@ -3,6 +3,12 @@
     background-color: #77a2f7;
 }
 
+.imgWrap {
+    margin-top: 3px;
+}
+
 .header img {
+    margin-left: 20px;
     width: 60px;
+    border-radius: 25px;
 }

@@ -6,11 +6,16 @@ const Post = () => {
     console.log(count);
     return (
         <div className={style.post}>
-            <img src="" alt='post user photo'></img>
+            <div className={style.imgWrap}>
+                <img src="" alt='post user photo'></img>
+            </div>
             <div className={style.postTxt}>Post_1</div>
-            <button onClick={() => {
-                console.log(++count);
-            }}>like</button>
+            <div className={style.wrapBtn}>
+                <button onClick={() => {
+                    console.log(++count);
+                }}>like</button>
+            </div>
+
         </div>
     )
 }
