@@ -12,11 +12,16 @@ let state = {
         {id: '4', messege: 'Good!!!'},
     ],
     posts: [
-        {id: '1', post: 'Hello world may first post'},
-        {id: '2', post: 'Hay may world'},
-        {id: '3', post: 'Nice work frends'},
-        {id: '4', post: 'Good!!! work'},
+        {id: '1', post: 'Hello world may first post', like: 10},
+        {id: '2', post: 'Hay may world', like: 12},
+        {id: '3', post: 'Nice work frends', like: 15},
+        {id: '4', post: 'Good!!! work', like: 17},
     ]
+}
+
+export let addPost = (text) => {
+    let newPost = {id: '5', post: text, like: 1};
+    state.posts.push(newPost);
 }
 
 

@@ -19,7 +19,7 @@ function App(props) {
                     <Navbar />
                     <div className='content'>
                         <Route path={`/profile`}>
-                            <Profile posts = {props.state.posts} />
+                            <Profile posts = {props.state.posts} newPost={props.newPost} />
                         </Route>
                         <Route path={`/dialogs`}>
                             <Dialogs users={props.state.users} messeges={props.state.messeges}/>

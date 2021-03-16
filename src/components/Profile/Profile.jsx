@@ -28,7 +28,7 @@ const Profile = (props) => {
                     <div>Web Site: <span>Vk.com</span></div>
                 </div>
             </div>
-            <NewPost />
+            <NewPost newPost={props.newPost}/>
             {postsItems}
         </div>
     )

@@ -8,3 +8,17 @@
     height: 500px;
     margin-right: 20px;
 }
+
+.newMessege {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+
+}
+
+.btnWrap {
+    text-align: end; 
+}

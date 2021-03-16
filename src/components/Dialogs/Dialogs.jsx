@@ -24,6 +24,14 @@ const Dialogs = (props) => {
         )
     });
 
+
+    let newMessegeElem = React.createRef();
+
+    let addMessege = () => {
+        let text = newMessegeElem.current.value;
+        alert(text);
+    }
+
     return (
         <Router>
             <div className={style.wrap}>
@@ -32,8 +40,14 @@ const Dialogs = (props) => {
                 </div >
                 <div className={style.usersWrap}>
                     {messegesItems}
-                </div>
+                    <div className= {style.newMessege} >
+                        <textarea ref={newMessegeElem}></textarea>
+                        <div className={style.btnWrap}>
+                            <button onClick = {addMessege} >push</button>
+                        </div>
 
+                    </div>
+                </div>
 
             </div>
         </Router>
