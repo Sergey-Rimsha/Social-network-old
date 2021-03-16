@@ -1,11 +1,8 @@
 import React from 'react';
 import style from './Navbar.module.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    NavLink
-  } from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import Frends from './Frends/Frends';
+
 
 const Navbar = () => {
     return (
@@ -38,6 +35,14 @@ const Navbar = () => {
                     Settings
                 </div>
             </NavLink>
+            <div className={style.wrap}>
+                <div>Frends</div>
+                <h3 className={style.frendsWrap}>
+                    <Frends name = {'Sergey'} />
+                    <Frends name = {'Vasay'} />
+                    <Frends name = {'Tafik'} />
+                </h3>
+            </div>
         </nav>
     )
 }

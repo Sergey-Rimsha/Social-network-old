@@ -7,29 +7,18 @@ import UserMessege from './UserMessege/UserMessege';
 import UsersChat from './UsersChat/UsersChat';
 import style from './Dialogs.module.css';
 
-const Dialogs = () => {
-    let usersItems = [
-        {id: '1', name: 'Sergey'},
-        {id: '2', name: 'Vasay'},
-        {id: '3', name: 'Evgen'},
-        {id: '4', name: 'Gena'},
-    ];
+const Dialogs = (props) => {
 
-    let userMesseges = [
-        {id: '1', messege: 'Hello world'},
-        {id: '2', messege: 'Hay'},
-        {id: '3', messege: 'Nice work'},
-        {id: '4', messege: 'Good!!!'},
-    ];
+    let {users, messeges} = props;
 
-    let items = usersItems.map((item) => {
+    let items = users.map((item) => {
         return (
             <UsersChat id={item.id} name={item.name} />
         )
         
     });
 
-    let messeges = userMesseges.map((item) => {
+    let messegesItems = messeges.map((item) => {
         return (
             <UserMessege id = {item.id} messege={item.messege} />
         )
@@ -42,7 +31,7 @@ const Dialogs = () => {
                     {items}
                 </div >
                 <div className={style.usersWrap}>
-                    {messeges}
+                    {messegesItems}
                 </div>
 
 

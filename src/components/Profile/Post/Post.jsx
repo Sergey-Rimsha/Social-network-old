@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Post.module.css';
 
-const Post = () => {
+const Post = (props) => {
     let count = 0;
     console.log(count);
     return (
@@ -9,7 +9,7 @@ const Post = () => {
             <div className={style.imgWrap}>
                 <img src="" alt='post user photo'></img>
             </div>
-            <div className={style.postTxt}>Post_1</div>
+            <div className={style.postTxt}>{props.post}</div>
             <div className={style.wrapBtn}>
                 <button onClick={() => {
                     console.log(++count);

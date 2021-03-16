@@ -4,7 +4,14 @@ import Post from './Post/Post';
 import NewPost from './NewPost/NewPost';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = () => {
+const Profile = (props) => {
+
+    let postsItems = props.posts.map(item => {
+        return (
+            <Post id = {item.id} post={item.post} />
+        )
+    });
+
     return (
         <div>
             <div className={style.wrap}>
@@ -22,7 +29,7 @@ const Profile = () => {
                 </div>
             </div>
             <NewPost />
-            <Post />
+            {postsItems}
         </div>
     )
 }

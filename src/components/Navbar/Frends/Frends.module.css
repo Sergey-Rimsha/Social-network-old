@@ -1,0 +1,16 @@
+.frend {
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+.imgWrap {
+    width: 50px;
+    height: 50px;
+    padding-bottom: 10px;
+}
+
+
+.frend img {
+    background-color: indianred;
+    border-radius: 50%;
+}
