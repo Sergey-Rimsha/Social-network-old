@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from './../render';
+
 let state = {
     users: [
         {id: '1', name: 'Sergey'},
@@ -22,6 +24,7 @@ let state = {
 export let addPost = (text) => {
     let newPost = {id: '5', post: text, like: 1};
     state.posts.push(newPost);
+    rerenderEntireTree(state);
 }
 
 
