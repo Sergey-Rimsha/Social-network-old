@@ -28,7 +28,7 @@ const Profile = (props) => {
                     <div>Web Site: <span>Vk.com</span></div>
                 </div>
             </div>
-            <NewPost newPost={props.newPost}/>
+            <NewPost inputText = {props.inputText} newStateText = {props.newStateText} newPost={props.newPost}/>
             {postsItems}
         </div>
     )

@@ -29,7 +29,11 @@ const Dialogs = (props) => {
 
     let addMessege = () => {
         let text = newMessegeElem.current.value;
-        alert(text);
+        props.addMessege(text);
+    }
+
+    let newMessege = () => {
+        props.newMessege();
     }
 
     return (
@@ -41,9 +45,9 @@ const Dialogs = (props) => {
                 <div className={style.usersWrap}>
                     {messegesItems}
                     <div className= {style.newMessege} >
-                        <textarea ref={newMessegeElem}></textarea>
+                        <textarea onChange={addMessege} ref={newMessegeElem} value={props.inputText}></textarea>
                         <div className={style.btnWrap}>
-                            <button onClick = {addMessege} >push</button>
+                            <button onClick = {newMessege} >push</button>
                         </div>
 
                     </div>

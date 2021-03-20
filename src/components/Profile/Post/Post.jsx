@@ -3,7 +3,6 @@ import style from './Post.module.css';
 
 const Post = (props) => {
     let count = 0;
-    console.log(count);
     return (
         <div className={style.post}>
             <div className={style.imgWrap}>

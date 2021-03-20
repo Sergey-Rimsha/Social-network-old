@@ -18,12 +18,32 @@ let state = {
         {id: '2', post: 'Hay may world', like: 12},
         {id: '3', post: 'Nice work frends', like: 15},
         {id: '4', post: 'Good!!! work', like: 17},
-    ]
+    ],
+    newPostText: '',
+    newMessegeText: ''
 }
 
-export let addPost = (text) => {
-    let newPost = {id: '5', post: text, like: 1};
-    state.posts.push(newPost);
+export let newPost = () => {
+    let post = {id: '5', post: state.newPostText, like: 1};
+    state.posts.push(post);
+    state.newPostText = '';
+    rerenderEntireTree(state);
+}
+
+export let newMessege = () => {
+    let messege = {id: '5', messege: state.newMessegeText}
+    state.messeges.push(messege);
+    state.newMessegeText = '';
+    rerenderEntireTree(state);
+}
+
+export let addMessege = (text) => {
+    state.newMessegeText = text;
+    rerenderEntireTree(state);
+} 
+
+export let newStateText = (text) => {
+    state.newPostText = text;
     rerenderEntireTree(state);
 }
 
