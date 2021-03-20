@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from './../render';
+let rerenderEntireTree = () => {
+    console.log('state rerender');
+}
 
 let state = {
     users: [
@@ -47,5 +49,9 @@ export let newStateText = (text) => {
     rerenderEntireTree(state);
 }
 
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+}
 
 export default state;
