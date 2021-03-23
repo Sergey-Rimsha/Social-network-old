@@ -9,8 +9,8 @@ export let rerenderEntireTree = (state) => {
         <React.StrictMode>
           <App 
             newMessege = {store.newMessege.bind(store)}
-            newStateText = {store._state.newMessegeText} 
-            state={store._state} 
+            newStateText = {store.newStateText.bind(store)} 
+            state={state} 
             newPost={store.newPost.bind(store)}
             addMessege = {store.addMessege.bind(store)}/>
         </React.StrictMode>,
@@ -18,6 +18,6 @@ export let rerenderEntireTree = (state) => {
       );
 }
 
-rerenderEntireTree(store.getState.bind(store));
+rerenderEntireTree(store.getState());
 
 store.subscribe(rerenderEntireTree);
