@@ -6,7 +6,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
 
-    let postsItems = props.posts.map(item => {
+    let postsItems = props.profileState.posts.map(item => {
         return (
             <Post id = {item.id} post={item.post} />
         )
@@ -28,7 +28,9 @@ const Profile = (props) => {
                     <div>Web Site: <span>Vk.com</span></div>
                 </div>
             </div>
-            <NewPost inputText = {props.inputText} newStateText = {props.newStateText} newPost={props.newPost}/>
+            <NewPost
+                dispatch = {props.dispatch} 
+                chengePostText = {props.chengePostText}/>
             {postsItems}
         </div>
     )

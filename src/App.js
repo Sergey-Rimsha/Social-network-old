@@ -19,19 +19,16 @@ function App(props) {
                     <Navbar />
                     <div className='content'>
                         <Route path={`/profile`}>
-                            <Profile 
-                                inputText = {props.state.newPostText} 
-                                posts = {props.state.posts} 
-                                newPost={props.newPost}
-                                newStateText = {props.newStateText} />
+                            <Profile
+                                dispatch = {props.dispatch}
+                                profileState = {props.state.profile}
+                                chengePostText = {props.state.chengePostText} />
                         </Route>
                         <Route path={`/dialogs`}>
                             <Dialogs
-                            newMessege = {props.newMessege}
-                            addMessege = {props.addMessege}
-                            inputText = {props.state.newMessegeText}
-                            users = {props.state.users} 
-                            messeges = {props.state.messeges}/>
+                            dispatch = {props.dispatch}
+                            dialogsState = {props.state.dialogs}
+                            chengeMessegeText = {props.state.chengeMessegeText} />
                         </Route>
                     </div>
                 </div>

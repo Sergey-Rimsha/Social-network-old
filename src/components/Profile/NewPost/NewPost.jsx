@@ -6,19 +6,24 @@ const NewPost = (props) => {
     let newPostElem = React.createRef();
 
     let addPost = () => {
-        props.newPost();
+        let action = {type: 'NEW-POST'}
+        props.dispatch(action);
     }
 
-    let inputText = () => {
+    let chengeText = () => {
         let text = newPostElem.current.value;
-        props.newStateText(text);
+        let action = {
+            type: 'CHENGE-POST',
+            text: text
+        }
+        props.dispatch(action);
     }
 
     return (
         <div className={style.newPost}>
             <div>My Posts</div>
             <div>
-                <input  onChange = {inputText} ref = {newPostElem} value = {props.inputText} type="text"/>
+                <input  onChange = {chengeText} ref = {newPostElem} value = {props.chengePostText} type="text"/>
             </div>
             <div>
                 <button onClick={addPost}>Send</button>
