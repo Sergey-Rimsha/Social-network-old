@@ -1,3 +1,8 @@
+const NEW_POST = 'NEW-POST';
+const CHENGE_POST = 'CHENGE-POST';
+const NEW_MESSEGE = 'NEW-MESSEGE';
+const CHENGE_MESSEGE = 'CHENGE-MESSEGE';
+
 let store = {
     _state: {
         dialogs: {
@@ -77,6 +82,32 @@ let store = {
         }
     }
 
+}
+
+export const addPostActionCreator = () => {
+    return {
+        type: NEW_POST
+    }
+} 
+
+export const chengeTextActionCreator = (text) => {
+    return {
+        type: CHENGE_POST,
+        text: text
+    }
+}
+
+export const addMessegeActionCreator = () => {
+    return {
+        type: NEW_MESSEGE
+    }
+}
+
+export const chengeMessegeActionCreator = (text) => {
+    return {
+        type: CHENGE_MESSEGE,
+        text: text
+    }
 }
 
 export default store;

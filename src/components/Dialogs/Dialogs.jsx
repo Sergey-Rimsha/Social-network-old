@@ -6,6 +6,7 @@ import {
 import UserMessege from './UserMessege/UserMessege';
 import UsersChat from './UsersChat/UsersChat';
 import style from './Dialogs.module.css';
+import {chengeMessegeActionCreator, addMessegeActionCreator} from '../../redux/state';
 
 const Dialogs = (props) => {
 
@@ -26,18 +27,11 @@ const Dialogs = (props) => {
 
     let chengeMessege = () => {
         let text = newMessegeElem.current.value;
-        let action = {
-            type: 'CHENGE-MESSEGE', 
-            text: text
-        };
-
-        props.dispatch(action);
-
+        props.dispatch(chengeMessegeActionCreator(text));
     }
 
     let addMessege = () => {
-        let action = {type: 'NEW-MESSEGE'};
-        props.dispatch(action);
+        props.dispatch(addMessegeActionCreator());
     }
 
     return (

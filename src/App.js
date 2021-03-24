@@ -26,9 +26,9 @@ function App(props) {
                         </Route>
                         <Route path={`/dialogs`}>
                             <Dialogs
-                            dispatch = {props.dispatch}
-                            dialogsState = {props.state.dialogs}
-                            chengeMessegeText = {props.state.chengeMessegeText} />
+                                dispatch = {props.dispatch}
+                                dialogsState = {props.state.dialogs}
+                                chengeMessegeText = {props.state.chengeMessegeText} />
                         </Route>
                     </div>
                 </div>

@@ -1,22 +1,18 @@
 import React from 'react';
 import style from './NewPost.module.css';
+import {addPostActionCreator, chengeTextActionCreator} from '../../../redux/state';
 
 const NewPost = (props) => {
 
     let newPostElem = React.createRef();
 
     let addPost = () => {
-        let action = {type: 'NEW-POST'}
-        props.dispatch(action);
+        props.dispatch(addPostActionCreator());
     }
 
     let chengeText = () => {
         let text = newPostElem.current.value;
-        let action = {
-            type: 'CHENGE-POST',
-            text: text
-        }
-        props.dispatch(action);
+        props.dispatch(chengeTextActionCreator(text));
     }
 
     return (
