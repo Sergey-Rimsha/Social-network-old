@@ -1,7 +1,6 @@
-const NEW_POST = 'NEW-POST';
-const CHENGE_POST = 'CHENGE-POST';
-const NEW_MESSEGE = 'NEW-MESSEGE';
-const CHENGE_MESSEGE = 'CHENGE-MESSEGE';
+import profileReducer from './profileReducer';
+import dialogsReducer from './dialogsReducer';
+
 
 let store = {
     _state: {
@@ -18,6 +17,7 @@ let store = {
                 {id: '3', messege: 'Nice work'},
                 {id: '4', messege: 'Good!!!'},
             ],
+            chengeMessegeText: ''
         },
         profile: {
             posts: [
@@ -26,10 +26,10 @@ let store = {
                 {id: '3', post: 'Nice work frends', like: 15},
                 {id: '4', post: 'Good!!! work', like: 17},
             ],
+            
+            chengePostText: '',
         },
 
-        chengePostText: '',
-        chengeMessegeText: ''
     },
 
     _callSubscriber() {
@@ -39,75 +39,20 @@ let store = {
     getState() {
         return this._state;
     },
-
-    newPost() {
-        let post = {id: '5', post: this._state.chengePostText, like: 1};
-        this._state.profile.posts.push(post);
-        this._state.chengePostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    newMessege() {
-        let messege = {id: '5', messege: this._state.chengeMessegeText}
-        this._state.dialogs.messeges.push(messege);
-        this._state.chengeMessegeText = '';
-        this._callSubscriber(this._state);
-    },
-    
-    chengeMessege(text) {  // обновляем input при вводе тестка в чате
-        this._state.chengeMessegeText = text;
-        this._callSubscriber(this._state);
-    }, 
-    
-    chengePost(text) { // обновляем input при вводе тестка в новый пост
-        this._state.chengePostText = text;
-        this._callSubscriber(this._state);
-    },
     
     subscribe(observer) {
         this._callSubscriber = observer;
     },
 
     dispatch(action) {
-        if (action.type === NEW_POST) {
-            return this.newPost();
-        } else if (action.type === NEW_MESSEGE) {
-            return this.newMessege();
-        } else if (action.type === CHENGE_MESSEGE) {
-            return this.chengeMessege(action.text);
-        } else if (action.type === CHENGE_POST) {
-            return this.chengePost(action.text);
-        } else {
-            console.log(`Error watch to action.type: ${action.type}`);
-        }
+        this._state.profile = profileReducer(this._state.profile, action);
+        this._state.dialogs = dialogsReducer(this._state.dialogs, action);
+
+        this._callSubscriber(this._state);
+
     }
 
 }
 
-export const addPostActionCreator = () => {
-    return {
-        type: NEW_POST
-    }
-} 
-
-export const chengeTextActionCreator = (text) => {
-    return {
-        type: CHENGE_POST,
-        text: text
-    }
-}
-
-export const addMessegeActionCreator = () => {
-    return {
-        type: NEW_MESSEGE
-    }
-}
-
-export const chengeMessegeActionCreator = (text) => {
-    return {
-        type: CHENGE_MESSEGE,
-        text: text
-    }
-}
 
 export default store;

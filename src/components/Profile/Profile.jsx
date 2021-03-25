@@ -30,7 +30,7 @@ const Profile = (props) => {
             </div>
             <NewPost
                 dispatch = {props.dispatch} 
-                chengePostText = {props.chengePostText}/>
+                chengePostText = {props.profileState.chengePostText}/>
             {postsItems}
         </div>
     )

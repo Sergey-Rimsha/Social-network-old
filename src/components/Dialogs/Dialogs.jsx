@@ -6,7 +6,7 @@ import {
 import UserMessege from './UserMessege/UserMessege';
 import UsersChat from './UsersChat/UsersChat';
 import style from './Dialogs.module.css';
-import {chengeMessegeActionCreator, addMessegeActionCreator} from '../../redux/state';
+import {chengeMessegeActionCreator, addMessegeActionCreator} from '../../redux/dialogsReducer';
 
 const Dialogs = (props) => {
 
@@ -43,7 +43,7 @@ const Dialogs = (props) => {
                 <div className={style.usersWrap}>
                     {messegesItems}
                     <div className= {style.newMessege} >
-                        <textarea onChange={chengeMessege} ref={newMessegeElem} value={props.chengeMessegeText}></textarea>
+                        <textarea onChange={chengeMessege} ref={newMessegeElem} value={props.dialogsState.chengeMessegeText}></textarea>
                         <div className={style.btnWrap}>
                             <button onClick = {addMessege}>push</button>
                         </div>
