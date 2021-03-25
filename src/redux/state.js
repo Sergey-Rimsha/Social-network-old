@@ -69,13 +69,13 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === 'NEW-POST') {
+        if (action.type === NEW_POST) {
             return this.newPost();
-        } else if (action.type === 'NEW-MESSEGE') {
+        } else if (action.type === NEW_MESSEGE) {
             return this.newMessege();
-        } else if (action.type === 'CHENGE-MESSEGE') {
+        } else if (action.type === CHENGE_MESSEGE) {
             return this.chengeMessege(action.text);
-        } else if (action.type === 'CHENGE-POST') {
+        } else if (action.type === CHENGE_POST) {
             return this.chengePost(action.text);
         } else {
             console.log(`Error watch to action.type: ${action.type}`);
