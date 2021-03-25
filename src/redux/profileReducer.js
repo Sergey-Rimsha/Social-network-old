@@ -1,7 +1,18 @@
 const NEW_POST = 'NEW-POST';
 const CHENGE_POST = 'CHENGE-POST';
 
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {id: '1', post: 'Hello world may first post', like: 10},
+        {id: '2', post: 'Hay may world', like: 12},
+        {id: '3', post: 'Nice work frends', like: 15},
+        {id: '4', post: 'Good!!! work', like: 17},
+    ],
+    
+    chengePostText: '',
+}
+
+const profileReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case NEW_POST:
