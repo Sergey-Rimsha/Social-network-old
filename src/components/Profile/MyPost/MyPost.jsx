@@ -1,18 +1,17 @@
 import React from 'react';
 import style from './NewPost.module.css';
-import {addPostActionCreator, chengeTextActionCreator} from '../../../redux/profileReducer';
 
-const NewPost = (props) => {
+const MyPost = (props) => {
 
     let newPostElem = React.createRef();
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.addPost();
     }
 
     let chengeText = () => {
         let text = newPostElem.current.value;
-        props.dispatch(chengeTextActionCreator(text));
+        props.chengeText(text);
     }
 
     return (
@@ -28,4 +27,4 @@ const NewPost = (props) => {
     )
 }
 
-export default NewPost;
+export default MyPost;

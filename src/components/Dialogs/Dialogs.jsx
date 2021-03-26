@@ -6,18 +6,17 @@ import {
 import UserMessege from './UserMessege/UserMessege';
 import UsersChat from './UsersChat/UsersChat';
 import style from './Dialogs.module.css';
-import {chengeMessegeActionCreator, addMessegeActionCreator} from '../../redux/dialogsReducer';
 
 const Dialogs = (props) => {
 
-    let items = props.dialogsState.users.map((item) => {
+    let items = props.stateUsers.map((item) => {
         return (
             <UsersChat id={item.id} name={item.name} />
         )
         
     });
 
-    let messegesItems = props.dialogsState.messeges.map((item) => {
+    let messegesItems = props.stateMesseges.map((item) => {
         return (
             <UserMessege id = {item.id} messege={item.messege} />
         )
@@ -27,11 +26,11 @@ const Dialogs = (props) => {
 
     let chengeMessege = () => {
         let text = newMessegeElem.current.value;
-        props.dispatch(chengeMessegeActionCreator(text));
+        props.chengeMessege(text);
     }
 
     let addMessege = () => {
-        props.dispatch(addMessegeActionCreator());
+        props.addMessege();
     }
 
     return (
@@ -43,7 +42,7 @@ const Dialogs = (props) => {
                 <div className={style.usersWrap}>
                     {messegesItems}
                     <div className= {style.newMessege} >
-                        <textarea onChange={chengeMessege} ref={newMessegeElem} value={props.dialogsState.chengeMessegeText}></textarea>
+                        <textarea onChange={chengeMessege} ref={newMessegeElem} value={props.chengeMessegeText}></textarea>
                         <div className={style.btnWrap}>
                             <button onClick = {addMessege}>push</button>
                         </div>

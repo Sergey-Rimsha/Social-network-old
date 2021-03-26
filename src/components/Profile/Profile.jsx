@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Profile.module.css';
 import Post from './Post/Post';
-import NewPost from './NewPost/NewPost';
+import MyPostContainer from './MyPost/MyPostContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
@@ -28,7 +28,7 @@ const Profile = (props) => {
                     <div>Web Site: <span>Vk.com</span></div>
                 </div>
             </div>
-            <NewPost
+            <MyPostContainer
                 dispatch = {props.dispatch} 
                 chengePostText = {props.profileState.chengePostText}/>
             {postsItems}
