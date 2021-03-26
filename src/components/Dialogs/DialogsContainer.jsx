@@ -4,6 +4,8 @@ import {chengeMessegeActionCreator, addMessegeActionCreator} from '../../redux/d
 
 const DialogsContainer = (props) => {
 
+    console.log(props.state)
+
     let chengeMessege = (text) => {
         props.dispatch(chengeMessegeActionCreator(text));
     }
