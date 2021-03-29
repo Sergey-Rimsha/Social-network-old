@@ -8,7 +8,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 // import logo from './logo.svg';
 import './App.css';
 
-function App(props) {
+function App() {
     return (
         <Router>
             <div className="App">
@@ -17,14 +17,10 @@ function App(props) {
                     <Navbar />
                     <div className='content'>
                         <Route path={`/profile`}>
-                            <Profile
-                                dispatch = {props.dispatch}
-                                profileState = {props.state.profile} />
+                            <Profile />
                         </Route>
                         <Route path={`/dialogs`}>
-                            <DialogsContainer 
-                                dispatch = {props.dispatch}
-                                state = {props.state} />
+                            <DialogsContainer />
                         </Route>
                     </div>
                 </div>

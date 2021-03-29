@@ -1,16 +1,10 @@
 import React from 'react';
 import style from './Profile.module.css';
-import Post from './Post/Post';
 import MyPostContainer from './MyPost/MyPostContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = (props) => {
 
-    let postsItems = props.profileState.posts.map(item => {
-        return (
-            <Post id = {item.id} post={item.post} />
-        )
-    });
+const Profile = () => {
 
     return (
         <div>
@@ -28,10 +22,7 @@ const Profile = (props) => {
                     <div>Web Site: <span>Vk.com</span></div>
                 </div>
             </div>
-            <MyPostContainer
-                dispatch = {props.dispatch} 
-                chengePostText = {props.profileState.chengePostText}/>
-            {postsItems}
+            <MyPostContainer/>
         </div>
     )
 }

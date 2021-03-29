@@ -1,28 +1,32 @@
-import React from 'react';
 import Dialogs from './Dialogs';
 import {chengeMessegeActionCreator, addMessegeActionCreator} from '../../redux/dialogsReducer';
+import { connect } from 'react-redux';
 
-const DialogsContainer = (props) => {
 
-    console.log(props.state)
-
-    let chengeMessege = (text) => {
-        props.dispatch(chengeMessegeActionCreator(text));
+let mapStateToProps = (state) => {
+    return {
+        stateUsers: state.dialogs.users,
+        stateMesseges: state.dialogs.messeges,
+        chengeMessegeText: state.dialogs.chengeMessegeText,
+        
     }
 
-    let addMessege = () => {
-        props.dispatch(addMessegeActionCreator());
-    }
-
-    return (
-        <Dialogs 
-            addMessege = {addMessege} 
-            chengeMessege = {chengeMessege}
-            stateUsers = {props.state.dialogs.users}
-            stateMesseges = {props.state.dialogs.messeges}
-            chengeMessegeText = {props.state.dialogs.chengeMessegeText}
-            />
-    )
 }
+
+let mapDispatchToProps = (dispatch) => {
+
+    return {
+        addMessege: () => {
+            dispatch(addMessegeActionCreator());
+        },
+    
+        chengeMessege: (text) => {
+            dispatch(chengeMessegeActionCreator(text));
+        }
+    }
+
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

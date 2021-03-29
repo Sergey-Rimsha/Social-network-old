@@ -1,24 +1,26 @@
-import React from 'react';
 import MyPost from './MyPost';
-
 import {addPostActionCreator, chengeTextActionCreator} from '../../../redux/profileReducer';
+import { connect } from 'react-redux';
 
-const MyPostContainer = (props) => {
-
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+let mapStateToProps = (state) => {
+    return {
+        chengePostText: state.profile.posts.chengePostText,
+        profileState: state.profile.posts
     }
-
-    let chengeText = (text) => {
-        props.dispatch(chengeTextActionCreator(text));
-    }
-
-    return (
-        <MyPost 
-            addPost = {addPost} 
-            chengeText = {chengeText}
-            chengePostText = {props.chengePostText} />
-    )
 }
 
-export default MyPostContainer;
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(addPostActionCreator());
+        },
+    
+        chengeText: (text) => {
+            dispatch(chengeTextActionCreator(text));
+        }
+    }
+}
+
+const MyPostContainerSuper = connect(mapStateToProps, mapDispatchToProps)(MyPost);
+
+export default MyPostContainerSuper;
