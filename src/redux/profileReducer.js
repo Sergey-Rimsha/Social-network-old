@@ -13,23 +13,20 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-
     switch(action.type) {
-        case NEW_POST: {
-
-            let post = {id: '5', post: state.chengePostText, like: 1};  
-            let copyState = {...state};          
-            copyState.posts = [...state.posts];
-            copyState.posts.push(post);
-            copyState.chengePostText = '';
-            return copyState;
-        }
-
-        case CHENGE_POST: {
-            let copyState = {...state};
-            copyState.chengePostText = action.text;
-            return copyState;
-        }
+        case NEW_POST: 
+            let post = {id: '5', post: state.chengePostText, like: 1};
+            return {
+                ...state,
+                posts: [...state.posts, post],
+                chengePostText: ''
+            }
+        case CHENGE_POST:
+            return {
+                ...state,
+                chengePostText: action.text
+            }
+        
 
         default:
             return state;

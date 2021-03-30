@@ -6,7 +6,7 @@ const MyPost = (props) => {
 
     let postsItems = props.profileState.map(item => {
         return (
-            <Post id = {item.id} post={item.post} />
+            <Post id = {item.id} post = {item.post} />
         )
     });
 

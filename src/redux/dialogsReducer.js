@@ -18,25 +18,20 @@ const initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-
     switch(action.type) {
+        case NEW_MESSEGE: 
+            let messege = {id: '5', messege: state.chengeMessegeText};
+            return {
+                ...state,
+                messeges: [...state.messeges, messege],
+                chengeMessegeText: ''
+            }
         
-        case NEW_MESSEGE: {
-            let messege = {id: '5', messege: state.chengeMessegeText}
-            let copyState = {...state};
-            copyState.messeges = [...state.messeges];
-            
-            copyState.messeges.push(messege);
-            copyState.chengeMessegeText = '';
-            return copyState;
-        }
-
-        case CHENGE_MESSEGE: {
-            let copyState = {...state};
-            copyState.chengeMessegeText = action.text;
-            return copyState;
-        }
-
+        case CHENGE_MESSEGE: 
+            return {
+                ...state,
+                chengeMessegeText: action.text
+            }
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
     return {
-        chengePostText: state.profile.posts.chengePostText,
+        chengePostText: state.profile.chengePostText,
         profileState: state.profile.posts
     }
 }
