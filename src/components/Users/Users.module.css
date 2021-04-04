@@ -1,0 +1,23 @@
+.wrap {
+    display: flex;    
+    background-color: gray;
+}
+
+.wraperAction {
+    width: 15%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+
+.wraperInfo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    margin: 10px 10px;
+    border: 1px solid red;
+    border-radius: 10px;
+}
+

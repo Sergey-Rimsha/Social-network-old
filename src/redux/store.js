@@ -1,5 +1,6 @@
 import profileReducer from './profileReducer';
 import dialogsReducer from './dialogsReducer';
+import usersReducer from './usersReducer';
 
 
 let store = {
@@ -29,6 +30,15 @@ let store = {
             
             chengePostText: '',
         },
+        users: {
+            usersInfo: [
+                {id: 1, name: 'Sergey', status: 'Hello', country:'Belarus', city:'Borisov', follow: false},
+                {id: 2, name: 'Gena', status: 'Hello men', country:'Belarus', city:'Minsk', follow: false},
+                {id: 3, name: 'Sasha', status: 'Hello gays', country:'Ukrane', city:'Kiev', follow: true},
+                {id: 4, name: 'Misha', status: 'Yo Yo Yo', country:'Belarus', city:'Borisov', follow: false}
+            ]
+
+        }
 
     },
 
@@ -47,6 +57,7 @@ let store = {
     dispatch(action) {
         this._state.profile = profileReducer(this._state.profile, action);
         this._state.dialogs = dialogsReducer(this._state.dialogs, action);
+        this._state.users = usersReducer(this._state.users, action);
 
         this._callSubscriber(this._state);
 
