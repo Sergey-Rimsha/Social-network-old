@@ -31,7 +31,7 @@ let store = {
             chengePostText: '',
         },
         users: {
-            usersInfo: [
+            users: [
                 {id: 1, name: 'Sergey', status: 'Hello', country:'Belarus', city:'Borisov', follow: false},
                 {id: 2, name: 'Gena', status: 'Hello men', country:'Belarus', city:'Minsk', follow: false},
                 {id: 3, name: 'Sasha', status: 'Hello gays', country:'Ukrane', city:'Kiev', follow: true},
