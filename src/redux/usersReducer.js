@@ -1,14 +1,14 @@
 const FOLLOW_USER = 'FOLLOW-USER';
 const UNFOLLOW_USER = 'UNFOLLOW-USER';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 let initialState = {
-    users: [
-        // {id: 1, name: 'Sergey', status: 'Hello', country:'Belarus', city:'Borisov', follow: false},
-        // {id: 2, name: 'Gena', status: 'Hello men', country:'Belarus', city:'Minsk', follow: false},
-        // {id: 3, name: 'Sasha', status: 'Hello gays', country:'Ukrane', city:'Kiev', follow: true},
-        // {id: 4, name: 'Misha', status: 'Yo Yo Yo', country:'Belarus', city:'Borisov', follow: false},
-    ]
+    users: [],
+    pageSize: 10,
+    totalUsersCount: 20,
+    currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -40,7 +40,16 @@ const usersReducer = (state = initialState, action) => {
         }
         case SET_USERS: {
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: [ ...action.users]
+            }
+        }
+        case SET_CURRENT_PAGE: {
+            return { ...state, currentPage: action.currentPage}
+        }
+
+        case SET_TOTAL_USERS_COUNT: {
+            return {
+                ...state, totalUsersCount: action.count
             }
         }
         default:
@@ -51,21 +60,34 @@ const usersReducer = (state = initialState, action) => {
 export const followUserActionCreator = (userId) => {
     return {
         type: FOLLOW_USER,
-        userId: userId
+        userId
     }
 }
 
 export const unFollowUserActionCreator = (userId) => {
     return {
         type: UNFOLLOW_USER,
-        userId: userId
+        userId
     }
 }
 
 export const setUsersAC = (users) => {
     return {
         type: SET_USERS,
-        users: users
+        users
+    }
+}
+export const setCurrentPageAC = (currentPage) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage
+    }
+}
+
+export const setUsersTotalCountAC = (totalUsersCount) => {
+    return {
+        type: SET_TOTAL_USERS_COUNT,
+        count: totalUsersCount
     }
 }
 
