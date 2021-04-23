@@ -1,4 +1,4 @@
-import {followUserActionCreator, unFollowUserActionCreator, setUsersAC, setCurrentPageAC, setUsersTotalCountAC} from '../../redux/usersReducer';
+import {followUserActionCreator, unFollowUserActionCreator, setUsersAC, setCurrentPageAC, setUsersTotalCountAC, setFetchingAC} from '../../redux/usersReducer';
 import {connect} from 'react-redux';
 import UsersWrap from './UsersWrap';
 
@@ -7,8 +7,8 @@ let mapStateToProps = (state) => {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
-
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
     }
 }
 
@@ -28,6 +28,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setTotalUsersCount: (totalCount) => {
             dispatch(setUsersTotalCountAC(totalCount));
+        },
+        setFetching: (isFetching) => {
+            dispatch(setFetchingAC(isFetching))
         }
     }
 }

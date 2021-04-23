@@ -23,11 +23,10 @@ let Users = (props) => {
                 }
             </div>
             {
-                props.users.map((item) => <div key={item.id} className={style.wrap}>
-                    {console.log(item)}         
+                props.users.map((item) => <div key={item.id} className={style.wrap}>       
                         <div className={style.wraperAction}>
                             <div className={style.imgWraper}>
-                                <img src={item.photos.small != null ? item.photos.small: userPhoto} alt='user img'></img>
+                                <img src={item.photos.small != null ? item.photos.small: userPhoto} alt='user_img'></img>
                             </div>
                             <div className={style.BtnWraper}>
                                 {
