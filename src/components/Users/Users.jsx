@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Users.module.css';
+import userPhoto from './../../assets/images/ava_default.jpg';
 
 
 let Users = (props) => {
@@ -23,10 +24,12 @@ let Users = (props) => {
             </div>
             {
                 props.users.map((item) => <div key={item.id} className={style.wrap}>
-                    {console.log(item.followed)}         
+                    {console.log(item)}         
                         <div className={style.wraperAction}>
-                            <img src='' alt='user img'></img>
-                            <div>
+                            <div className={style.imgWraper}>
+                                <img src={item.photos.small != null ? item.photos.small: userPhoto} alt='user img'></img>
+                            </div>
+                            <div className={style.BtnWraper}>
                                 {
                                     item.followed
                                     ? <button onClick={() => {props.unFollowUser(item.id)}}>UNFOLLOW</button>
@@ -37,11 +40,11 @@ let Users = (props) => {
                         <div className={style.wraperInfo}>
                             <div>
                                 <div>{item.name}</div>
-                                <div>{item.status}</div>
+                                <div>{`item.status`}</div>
                             </div>
                             <div className={style.wrapCity}>
-                                <div>{item.country}</div>
-                                <div>{item.city}</div>
+                                <div>{`item.country`}</div>
+                                <div>{`item.city`}</div>
                             </div>
                         </div>
                     </div>  
