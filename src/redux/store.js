@@ -32,10 +32,10 @@ let store = {
         },
         users: {
             users: [
-                {id: 1, name: 'Sergey', status: 'Hello', country:'Belarus', city:'Borisov', follow: false},
-                {id: 2, name: 'Gena', status: 'Hello men', country:'Belarus', city:'Minsk', follow: false},
-                {id: 3, name: 'Sasha', status: 'Hello gays', country:'Ukrane', city:'Kiev', follow: true},
-                {id: 4, name: 'Misha', status: 'Yo Yo Yo', country:'Belarus', city:'Borisov', follow: false}
+                {id: 1, name: 'Sergey', status: 'Hello', country:'Belarus', city:'Borisov', followed: false},
+                {id: 2, name: 'Gena', status: 'Hello men', country:'Belarus', city:'Minsk', followed: false},
+                {id: 3, name: 'Sasha', status: 'Hello gays', country:'Ukrane', city:'Kiev', followed: true},
+                {id: 4, name: 'Misha', status: 'Yo Yo Yo', country:'Belarus', city:'Borisov', followed: false}
             ]
 
         }

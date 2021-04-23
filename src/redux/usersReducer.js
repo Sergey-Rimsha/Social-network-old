@@ -19,7 +19,7 @@ const usersReducer = (state = initialState, action) => {
                 usersInfo: state.users.map(item => {
                     if (item.id === action.userId) {
                         return {
-                            ...item, follow: true
+                            ...item, followed: true
                         }
                     }
                     return item
@@ -31,7 +31,7 @@ const usersReducer = (state = initialState, action) => {
                 usersInfo: state.users.map(item => {
                     if (item.id === action.userId) {
                         return {
-                            ...item, follow: false
+                            ...item, followed: false
                         }
                     }
                     return item

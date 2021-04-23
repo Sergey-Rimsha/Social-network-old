@@ -1,6 +1,6 @@
-import Users from './Users';
 import {followUserActionCreator, unFollowUserActionCreator, setUsersAC, setCurrentPageAC, setUsersTotalCountAC} from '../../redux/usersReducer';
 import {connect} from 'react-redux';
+import UsersWrap from './UsersWrap';
 
 let mapStateToProps = (state) => {
     return {
@@ -32,6 +32,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersWrap);
 
 export default UsersContainer;
