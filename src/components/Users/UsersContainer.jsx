@@ -1,4 +1,4 @@
-import {followUserActionCreator, unFollowUserActionCreator, setUsersAC, setCurrentPageAC, setUsersTotalCountAC, setFetchingAC} from '../../redux/usersReducer';
+import {followUser, unFollowUser, setUsers, setCurrentPage, setTotalUsersCount, setFetching} from '../../redux/usersReducer';
 import {connect} from 'react-redux';
 import UsersWrap from './UsersWrap';
 
@@ -12,29 +12,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        followUser: (userId) => {
-            dispatch(followUserActionCreator(userId));
-        },
-        unFollowUser: (userId) => {
-            dispatch(unFollowUserActionCreator(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber));
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setUsersTotalCountAC(totalCount));
-        },
-        setFetching: (isFetching) => {
-            dispatch(setFetchingAC(isFetching))
-        }
-    }
-}
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersWrap);
+const UsersContainer = connect(mapStateToProps, {followUser, unFollowUser, setUsers, setCurrentPage, setTotalUsersCount, setFetching})(UsersWrap);
 
 export default UsersContainer;
