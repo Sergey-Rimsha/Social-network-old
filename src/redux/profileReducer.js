@@ -1,5 +1,6 @@
 const NEW_POST = 'NEW-POST';
 const CHENGE_POST = 'CHENGE-POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     posts: [
@@ -8,8 +9,8 @@ let initialState = {
         {id: '3', post: 'Nice work frends', like: 15},
         {id: '4', post: 'Good!!! work', like: 17},
     ],
-    
     chengePostText: '',
+    profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -26,8 +27,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 chengePostText: action.text
             }
-        
-
+        case SET_USER_PROFILE: 
+            return {
+                ...state,
+                profile: action.profile
+            }
         default:
             return state;
     }
@@ -43,6 +47,13 @@ export const chengeTextActionCreator = (text) => {
     return {
         type: CHENGE_POST,
         text: text
+    }
+}
+
+export const setUsersProfile = (profile) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile
     }
 }
 

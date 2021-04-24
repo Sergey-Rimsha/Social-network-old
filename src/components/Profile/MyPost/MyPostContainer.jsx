@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
     return {
-        chengePostText: state.profile.chengePostText,
-        profileState: state.profile.posts
+        chengePostText: state.profilePage.chengePostText,
+        profileState: state.profilePage.posts
     }
 }
 
@@ -21,6 +21,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MyPostContainerSuper = connect(mapStateToProps, mapDispatchToProps)(MyPost);
+const MyPostContainer = connect(mapStateToProps, mapDispatchToProps)(MyPost);
 
-export default MyPostContainerSuper;
+export default MyPostContainer;
