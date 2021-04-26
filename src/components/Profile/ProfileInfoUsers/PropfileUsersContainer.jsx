@@ -1,11 +1,14 @@
 import ProfileUsersWrap from './ProfileUsersWrap';
 import { connect } from 'react-redux';
 import {setUsersProfile} from './../../../redux/profileReducer';
+import { withRouter } from 'react-router';
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile
 });
 
-export default connect(mapStateToProps, {setUsersProfile})(ProfileUsersWrap);
+let WithUrlDataContainerComponent = withRouter(ProfileUsersWrap);
+
+export default connect(mapStateToProps, {setUsersProfile})(WithUrlDataContainerComponent);
 
 
