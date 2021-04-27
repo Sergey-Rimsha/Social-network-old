@@ -1,4 +1,6 @@
 .header {
+    display: flex;
+    justify-content: space-between;
     grid-area: header;
     background-color: #77a2f7;
 }
@@ -11,4 +13,11 @@
     margin-left: 20px;
     width: 60px;
     border-radius: 25px;
+}
+
+.authLogin {
+    padding-right: 15px;
+    padding-top: 15px;
+    color: white;
+    text-decoration: none;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -8,13 +7,14 @@ import UsersContainer from './components/Users/UsersContainer';
 
 // import logo from './logo.svg';
 import './App.css';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <div className="grid">
-                    <Header />
+                    <HeaderContainer />
                     <Navbar />
                     <div className='content'>
                         <Route path={`/profile/:userId?`}>
