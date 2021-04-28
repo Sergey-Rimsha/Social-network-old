@@ -1,29 +1,27 @@
 import React from 'react';
-import * as axios from 'axios';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
+import usersApi from '../../api/api';
 
 class UsersWrap extends React.Component {
 
     componentDidMount() {
         this.props.setFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.carrentPage}&count=${this.props.pageSize}`)
+        usersApi.getUsersPage(this.props.carrentPage, this.props.pageSize)
             .then(response => {
                 this.props.setFetching(false);
-                this.props.setUsers(response.data.items);
+                this.props.setUsers(response.items);
             });
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.setFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{
-            withCredentials: true
-        })
+        usersApi.getUsersPage(pageNumber, this.props.pageSize)
             .then(response => {
                 this.props.setFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.setUsers(response.items);
+                this.props.setTotalUsersCount(response.totalCount);
             });
 
     }

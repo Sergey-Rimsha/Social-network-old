@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React from 'react';
 import ProfileUsers from './ProfileUsers';
+import usersApi from './../../../api/api';
 
 class ProfileUsersWrap extends React.Component {
 
@@ -9,11 +9,9 @@ class ProfileUsersWrap extends React.Component {
         if (!userId) {
             userId = 2;
         }   
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`,{
-            withCredentials: true
-        })
+        usersApi.getProfile(userId)
             .then(response => {
-                this.props.setUsersProfile(response.data);
+                this.props.setUsersProfile(response);
             });
     }
 
