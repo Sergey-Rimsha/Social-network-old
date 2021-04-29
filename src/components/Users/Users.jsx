@@ -35,22 +35,22 @@ let Users = (props) => {
                             <div className={style.BtnWraper}>
                                 {
                                     item.followed
-                                    ? <button onClick={() => {
-                                        // props.unFollowUser(item.id);
+                                    ? <button disabled={props.followingInProgress.some(id => id === item.id)} onClick={() => {
                                         usersApi.delFollow(item.id)                                       
                                             .then(response => {
                                                 if (response.resultCode === 0) {
                                                     props.unFollowUser(item.id);  
                                                 }
+                                                props.toggleFollowingProgress(false, item.id);
                                             });
                                     }}>UNFOLLOW</button>
-                                    : <button onClick={() => {
-                                        // props.followUser(item.id);
+                                    : <button disabled={props.followingInProgress.some(id => id === item.id)} onClick={() => {
                                         usersApi.postFollow(item.id)
                                             .then(response => {
                                                 if (response.resultCode === 0) {
                                                     props.followUser(item.id);
                                                 }
+                                                props.toggleFollowingProgress(false, item.id);
                                             });
                                     }}>FOLLOW</button>
                                 }
