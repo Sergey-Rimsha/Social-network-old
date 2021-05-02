@@ -1,6 +1,6 @@
 import ProfileUsersWrap from './ProfileUsersWrap';
 import { connect } from 'react-redux';
-import {setUsersProfile} from './../../../redux/profileReducer';
+import {setUserApi} from './../../../redux/profileReducer';
 import { withRouter } from 'react-router';
 
 let mapStateToProps = (state) => ({
@@ -9,6 +9,6 @@ let mapStateToProps = (state) => ({
 
 let WithUrlDataContainerComponent = withRouter(ProfileUsersWrap);
 
-export default connect(mapStateToProps, {setUsersProfile})(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, {setUserApi})(WithUrlDataContainerComponent);
 
 

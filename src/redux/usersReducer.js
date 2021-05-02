@@ -1,3 +1,5 @@
+import usersApi from './../api/api';
+
 const FOLLOW_USER = 'FOLLOW-USER';
 const UNFOLLOW_USER = 'UNFOLLOW-USER';
 const SET_USERS = 'SET-USERS';
@@ -116,5 +118,50 @@ export const setFetching = (isFetching) => {
     }
 }
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
+
+
+    //  redux-thunk
+
+export const getUsers = (carrentPage, pageSize) => {
+
+    return (dispatch) => {
+        dispatch(setFetching(true));
+        usersApi.getUsersPage(carrentPage, pageSize)
+            .then(response => {
+                dispatch(setFetching(false));
+                dispatch(setUsers(response.items));
+                dispatch(setTotalUsersCount(response.totalCount));
+            });
+
+    }
+} 
+export const follow = (userId) => {
+
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        usersApi.postFollow(userId)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(followUser(userId));
+                }
+                dispatch(toggleFollowingProgress(false, userId));
+            });
+
+    }
+} 
+export const unfollow = (userId) => {
+
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        usersApi.delFollow(userId)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(unFollowUser(userId));
+                }
+                dispatch(toggleFollowingProgress(false, userId));
+            });
+
+    }
+} 
 
 export default usersReducer;

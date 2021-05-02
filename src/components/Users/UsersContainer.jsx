@@ -1,4 +1,4 @@
-import {followUser, unFollowUser, setUsers, setCurrentPage, setTotalUsersCount, setFetching, toggleFollowingProgress} from '../../redux/usersReducer';
+import {setUsers, setCurrentPage, setTotalUsersCount, setFetching, getUsers, follow, unfollow} from '../../redux/usersReducer';
 import {connect} from 'react-redux';
 import UsersWrap from './UsersWrap';
 
@@ -13,6 +13,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, {followUser, unFollowUser, setUsers, setCurrentPage, setTotalUsersCount, setFetching, toggleFollowingProgress})(UsersWrap);
+const UsersContainer = connect(mapStateToProps, {setUsers, 
+    setCurrentPage, setTotalUsersCount, setFetching, 
+    getUsers, follow, unfollow
+})(UsersWrap);
 
 export default UsersContainer;

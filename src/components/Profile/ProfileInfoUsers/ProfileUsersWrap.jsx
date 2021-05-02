@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfileUsers from './ProfileUsers';
-import usersApi from './../../../api/api';
 
 class ProfileUsersWrap extends React.Component {
 
@@ -9,10 +8,7 @@ class ProfileUsersWrap extends React.Component {
         if (!userId) {
             userId = 2;
         }   
-        usersApi.getProfile(userId)
-            .then(response => {
-                this.props.setUsersProfile(response);
-            });
+        this.props.setUserApi(userId);
     }
 
     render() {

@@ -33,27 +33,11 @@ let Users = (props) => {
                                 </div>
                             </NavLink>
                             <div className={style.BtnWraper}>
-                                {
-                                    item.followed
-                                    ? <button disabled={props.followingInProgress.some(id => id === item.id)} onClick={() => {
-                                        usersApi.delFollow(item.id)                                       
-                                            .then(response => {
-                                                if (response.resultCode === 0) {
-                                                    props.unFollowUser(item.id);  
-                                                }
-                                                props.toggleFollowingProgress(false, item.id);
-                                            });
-                                    }}>UNFOLLOW</button>
-                                    : <button disabled={props.followingInProgress.some(id => id === item.id)} onClick={() => {
-                                        usersApi.postFollow(item.id)
-                                            .then(response => {
-                                                if (response.resultCode === 0) {
-                                                    props.followUser(item.id);
-                                                }
-                                                props.toggleFollowingProgress(false, item.id);
-                                            });
-                                    }}>FOLLOW</button>
-                                }
+                                {item.followed
+                                    ? <button disabled={props.followingInProgress.some(id => id === item.id)}
+                                     onClick={() => props.unfollow(item.id)}>UNFOLLOW</button>
+                                    : <button disabled={props.followingInProgress.some(id => id === item.id)} 
+                                    onClick={() => props.follow(item.id)}>FOLLOW</button>}
                             </div>
                         </div>
                         <div className={style.wraperInfo}>

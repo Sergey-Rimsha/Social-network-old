@@ -1,3 +1,5 @@
+import usersApi from './../api/api';
+
 const NEW_POST = 'NEW-POST';
 const CHENGE_POST = 'CHENGE-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -54,6 +56,17 @@ export const setUsersProfile = (profile) => {
     return {
         type: SET_USER_PROFILE,
         profile
+    }
+}
+
+    //  redux-thunk
+
+export const setUserApi = (userId) => {
+    return (dispatch) => {
+        usersApi.getProfile(userId)
+        .then(response => {
+            dispatch(setUsersProfile(response));
+        });
     }
 }
 

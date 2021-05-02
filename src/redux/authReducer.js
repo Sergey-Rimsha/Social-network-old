@@ -1,3 +1,5 @@
+import usersApi from './../api/api';
+
 const SET_USER_DATE = 'SET_USER_DATE';
 
 const initialState = {
@@ -27,5 +29,23 @@ export const setAuthUserDate = (id, email, login) => {
         date: {id, email, login}
     }
 }
+
+
+
+        //  redux-thunk
+
+export const setAuth = () => {
+    
+    return (dispatch) => {
+        usersApi.getAuth()
+        .then(response => {
+            if (response.resultCode === 0) {
+                let {id, login, email} = response.data;
+                dispatch(setAuthUserDate(id, email, login));
+            }
+        });
+
+    }
+} 
 
 export default authReducer;
