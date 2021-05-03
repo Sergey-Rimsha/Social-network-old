@@ -8,6 +8,7 @@ import UsersContainer from './components/Users/UsersContainer';
 // import logo from './logo.svg';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Header/Login/login';
 
 function App() {
     return (
@@ -25,6 +26,9 @@ function App() {
                         </Route>
                         <Route path={`/users`}>
                             <UsersContainer />
+                        </Route>
+                        <Route path={`/login`}>
+                            <Login />
                         </Route>
                     </div>
                 </div>
