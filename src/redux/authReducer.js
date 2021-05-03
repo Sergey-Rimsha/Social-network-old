@@ -30,8 +30,6 @@ export const setAuthUserDate = (id, email, login) => {
     }
 }
 
-
-
         //  redux-thunk
 
 export const setAuth = () => {

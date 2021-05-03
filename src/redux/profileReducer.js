@@ -64,9 +64,9 @@ export const setUsersProfile = (profile) => {
 export const setUserApi = (userId) => {
     return (dispatch) => {
         usersApi.getProfile(userId)
-        .then(response => {
-            dispatch(setUsersProfile(response));
-        });
+            .then(response => {
+                dispatch(setUsersProfile(response));
+            });
     }
 }
 

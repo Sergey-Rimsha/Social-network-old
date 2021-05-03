@@ -1,6 +1,7 @@
 import {setUsers, setCurrentPage, setTotalUsersCount, setFetching, getUsers, follow, unfollow} from '../../redux/usersReducer';
 import {connect} from 'react-redux';
 import UsersWrap from './UsersWrap';
+import {withAuthRedirect} from './../../hoc/withAuthRedirect';
 
 let mapStateToProps = (state) => {
     return {
@@ -10,13 +11,14 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
-        isAuth: state.auth.isAuth
     }
 }
 
-const UsersContainer = connect(mapStateToProps, {setUsers, 
+
+
+const UsersContainer = withAuthRedirect(connect(mapStateToProps, {setUsers, 
     setCurrentPage, setTotalUsersCount, setFetching, 
     getUsers, follow, unfollow
-})(UsersWrap);
+})(UsersWrap));
 
 export default UsersContainer;

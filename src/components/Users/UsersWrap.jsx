@@ -1,7 +1,6 @@
 import React from 'react';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import { Redirect } from 'react-router';
 
 class UsersWrap extends React.Component {
 
@@ -15,9 +14,6 @@ class UsersWrap extends React.Component {
     }
 
     render() {
-        if (!this.props.isAuth) {
-            return <Redirect to={'/login'} />
-        }
 
         return (
             <>  
