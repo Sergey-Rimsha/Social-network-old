@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import {setUserApi} from './../../../redux/profileReducer';
 import { withRouter } from 'react-router';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile
 });
 
-let WithUrlDataContainerComponent = withRouter(ProfileUsersWrap);
 
-export default withAuthRedirect(connect(mapStateToProps, {setUserApi})(WithUrlDataContainerComponent));
+export default compose(
+    connect(mapStateToProps, {setUserApi}),
+    withRouter,
+    withAuthRedirect,
+)(ProfileUsersWrap);
 
 
