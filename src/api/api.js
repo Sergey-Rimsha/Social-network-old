@@ -42,6 +42,18 @@ let usersApi = {
             instance.post(`follow/${id}`)
                 .then(response => response.data)
         )
+    },
+
+    putProfileStatus(status) {
+        return (
+            instance.put(`/profile/status`, {status})
+        )
+    },
+    
+    getProfileStatus(userId) {
+        return (
+            instance.get(`/profile/status${userId}`)
+        )
     }
 
 }

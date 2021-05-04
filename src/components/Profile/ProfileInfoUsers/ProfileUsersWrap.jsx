@@ -9,6 +9,7 @@ class ProfileUsersWrap extends React.Component {
             userId = 2;
         }   
         this.props.setUserApi(userId);
+        this.props.getStatus(userId);
     }
 
     render() {

@@ -18,7 +18,7 @@ const ProfileUsersWrap = (props) => {
                 </div>
                 <div className={style.userInfo}>
                     <div>{props.profile.fullName}</div>
-                    <ProfileStatus status={'hello world!!'}/>
+                    <ProfileStatus status={props.status} setStatus={props.setStatus}/>
                     <div>Date of Britch: <span>7.08.1994</span></div>
                     <div>Education: <span>БГПК</span></div>
                     <div>Web Site: <span>Vk.com</span></div>

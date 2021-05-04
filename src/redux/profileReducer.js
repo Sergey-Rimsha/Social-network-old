@@ -3,6 +3,7 @@ import usersApi from './../api/api';
 const NEW_POST = 'NEW-POST';
 const CHENGE_POST = 'CHENGE-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     posts: [
@@ -12,7 +13,8 @@ let initialState = {
         {id: '4', post: 'Good!!! work', like: 17},
     ],
     chengePostText: '',
-    profile: null
+    profile: null,
+    status: ''
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -34,6 +36,12 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            }
+        
         default:
             return state;
     }
@@ -59,6 +67,13 @@ export const setUsersProfile = (profile) => {
     }
 }
 
+export const setProfileStatus = (status) => {
+    return {
+        type: SET_STATUS,
+        status
+    }
+}
+
     //  redux-thunk
 
 export const setUserApi = (userId) => {
@@ -67,6 +82,25 @@ export const setUserApi = (userId) => {
             .then(response => {
                 dispatch(setUsersProfile(response));
             });
+    }
+}
+
+export const setStatus = (status) => {
+    return (dispatch) => {
+        usersApi.putProfileStatus(status)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setProfileStatus(response.data));
+                }
+            })
+    }
+}
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        usersApi.putProfileStatus(userId)
+            .then(response => {
+                dispatch(setProfileStatus(response.data));
+            })
     }
 }
 
