@@ -90,14 +90,14 @@ export const setStatus = (status) => {
         usersApi.putProfileStatus(status)
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    dispatch(setProfileStatus(response.data));
+                    dispatch(setProfileStatus(status));
                 }
             })
     }
 }
 export const getStatus = (userId) => {
     return (dispatch) => {
-        usersApi.putProfileStatus(userId)
+        usersApi.getProfileStatus(userId)
             .then(response => {
                 dispatch(setProfileStatus(response.data));
             })

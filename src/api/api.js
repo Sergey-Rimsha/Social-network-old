@@ -52,7 +52,7 @@ let usersApi = {
     
     getProfileStatus(userId) {
         return (
-            instance.get(`/profile/status${userId}`)
+            instance.get(`/profile/status/${userId}`)
         )
     }
 
