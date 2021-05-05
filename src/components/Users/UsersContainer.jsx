@@ -1,4 +1,5 @@
 import {setUsers, setCurrentPage, setTotalUsersCount, setFetching, getUsers, follow, unfollow} from '../../redux/usersReducer';
+import {getStatus} from './../../redux/profileReducer';
 import {connect} from 'react-redux';
 import UsersWrap from './UsersWrap';
 import {withAuthRedirect} from './../../hoc/withAuthRedirect';
@@ -16,6 +17,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {setUsers, setCurrentPage, setTotalUsersCount, setFetching, getUsers, follow, unfollow}),
+    connect(mapStateToProps, {setUsers, setCurrentPage, setTotalUsersCount, setFetching, getUsers, follow, unfollow, getStatus}),
     withAuthRedirect,
 )(UsersWrap);

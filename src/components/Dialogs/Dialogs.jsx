@@ -6,6 +6,26 @@ import {
 import UserMessege from './UserMessege/UserMessege';
 import UsersChat from './UsersChat/UsersChat';
 import style from './Dialogs.module.css';
+import { Field, reduxForm} from 'redux-form';
+
+
+const MessegeForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component={'textarea'} name={'myMessege'}></Field>
+            </div>
+            <div className={style.btnWrap}>
+                <button>push</button>
+            </div>
+        </form>
+    )
+}
+
+const MyMessegeReduxForm = reduxForm({
+    // a unique name for the form
+    form: 'messege'
+  })(MessegeForm)
 
 const Dialogs = (props) => {
 
@@ -22,14 +42,8 @@ const Dialogs = (props) => {
         )
     });
 
-    let newMessegeElem = React.createRef();
-
-    let chengeMessege = () => {
-        let text = newMessegeElem.current.value;
-        props.chengeMessege(text);
-    }
-
-    let addMessege = () => {
+    const onSubmit = (formData) => {
+        props.chengeMessege(formData.myMessege);
         props.addMessege();
     }
 
@@ -42,11 +56,7 @@ const Dialogs = (props) => {
                 <div className={style.usersWrap}>
                     {messegesItems}
                     <div className= {style.newMessege} >
-                        <textarea onChange={chengeMessege} ref={newMessegeElem} value={props.chengeMessegeText}></textarea>
-                        <div className={style.btnWrap}>
-                            <button onClick = {addMessege}>push</button>
-                        </div>
-
+                        <MyMessegeReduxForm onSubmit={onSubmit} />
                     </div>
                 </div>
 

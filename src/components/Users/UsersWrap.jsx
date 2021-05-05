@@ -27,6 +27,7 @@ class UsersWrap extends React.Component {
                     followingInProgress={this.props.followingInProgress}
                     follow={this.props.follow}
                     unfollow={this.props.unfollow}
+                    getStatus={this.props.getStatus}
                 />
             </>
         );

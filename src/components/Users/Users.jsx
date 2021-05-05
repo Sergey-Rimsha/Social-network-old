@@ -42,7 +42,7 @@ let Users = (props) => {
                         <div className={style.wraperInfo}>
                             <div>
                                 <div>{item.name}</div>
-                                <div>{`item.status`}</div>
+                                <div>{`props.getStatus(item.id)` || `--status--`}</div>
                             </div>
                             <div className={style.wrapCity}>
                                 <div>{`item.country`}</div>

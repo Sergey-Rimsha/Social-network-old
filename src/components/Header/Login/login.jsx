@@ -37,7 +37,7 @@ const Login = (props) => {
 
 const LoginReduxForm = reduxForm({
     // a unique name for the form
-    form: 'contact'
+    form: 'login'
   })(LoginForm);
 
 export default Login;

@@ -1,6 +1,26 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import Post from '../Post/Post';
 import style from './NewPost.module.css';
+
+
+const MyPostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component={'input'} name={'post'} type="text"/>
+            </div>
+            <div>
+                <button>Send</button>
+            </div>
+        </form>
+    )
+}
+
+const MyPostReduxForm = reduxForm({
+    // a unique name for the form
+    form: 'post'
+  })(MyPostForm);
 
 const MyPost = (props) => {
 
@@ -10,27 +30,16 @@ const MyPost = (props) => {
         )
     });
 
-    let newPostElem = React.createRef();
-
-    let addPost = () => {
+    const onSubmit = (formData) => {
+        props.chengeText(formData.post);
         props.addPost();
-    }
-
-    let chengeText = () => {
-        let text = newPostElem.current.value;
-        props.chengeText(text);
-    }
+    } 
 
     return (
         <>
             <div className={style.newPost}>
                 <div>My Posts</div>
-                <div>
-                    <input  onChange = {chengeText} ref = {newPostElem} value = {props.chengePostText} type="text"/>
-                </div>
-                <div>
-                    <button onClick={addPost}>Send</button>
-                </div>
+                <MyPostReduxForm onSubmit={onSubmit} />
             </div>
 
             {postsItems}

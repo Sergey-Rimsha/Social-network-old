@@ -14,7 +14,6 @@ class ProfileUsersWrap extends React.Component {
     }
 
     render() {
-        debugger
         return (
             <>
                 <ProfileUsers {...this.props} profile={this.props.profile}/>
