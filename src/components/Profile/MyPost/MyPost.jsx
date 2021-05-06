@@ -31,8 +31,7 @@ const MyPost = (props) => {
     });
 
     const onSubmit = (formData) => {
-        props.chengeText(formData.post);
-        props.addPost();
+        props.addPost(formData.post);
     } 
 
     return (

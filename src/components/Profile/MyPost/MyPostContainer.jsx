@@ -1,5 +1,5 @@
 import MyPost from './MyPost';
-import {addPostActionCreator, chengeTextActionCreator} from '../../../redux/profileReducer';
+import {addPostActionCreator} from '../../../redux/profileReducer';
 import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
@@ -11,12 +11,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addPost: () => {
-            dispatch(addPostActionCreator());
-        },
-    
-        chengeText: (text) => {
-            dispatch(chengeTextActionCreator(text));
+        addPost: (text) => {
+            dispatch(addPostActionCreator(text));
         }
     }
 }

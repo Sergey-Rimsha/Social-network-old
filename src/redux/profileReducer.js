@@ -12,7 +12,6 @@ let initialState = {
         {id: '3', post: 'Nice work frends', like: 15},
         {id: '4', post: 'Good!!! work', like: 17},
     ],
-    chengePostText: '',
     profile: null,
     status: ''
 }
@@ -20,11 +19,10 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
         case NEW_POST: 
-            let post = {id: '5', post: state.chengePostText, like: 1};
+            let post = {id: '5', post: action.text, like: 1};
             return {
                 ...state,
-                posts: [...state.posts, post],
-                chengePostText: ''
+                posts: [...state.posts, post]
             }
         case CHENGE_POST:
             return {
@@ -47,18 +45,12 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (text) => {
     return {
-        type: NEW_POST
+        type: NEW_POST,
+        text
     }
 } 
-
-export const chengeTextActionCreator = (text) => {
-    return {
-        type: CHENGE_POST,
-        text: text
-    }
-}
 
 export const setUsersProfile = (profile) => {
     return {

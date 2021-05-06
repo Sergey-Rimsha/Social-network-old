@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-} from "react-router-dom";
-
+import { BrowserRouter as Router } from "react-router-dom";
 import UserMessege from './UserMessege/UserMessege';
 import UsersChat from './UsersChat/UsersChat';
 import style from './Dialogs.module.css';
@@ -43,8 +40,7 @@ const Dialogs = (props) => {
     });
 
     const onSubmit = (formData) => {
-        props.chengeMessege(formData.myMessege);
-        props.addMessege();
+        props.addMessege(formData.myMessege);
     }
 
     return (

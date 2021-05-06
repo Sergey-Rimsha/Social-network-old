@@ -1,5 +1,4 @@
 const NEW_MESSEGE = 'NEW-MESSEGE';
-const CHENGE_MESSEGE = 'CHENGE-MESSEGE';
 
 const initialState = {
         users: [
@@ -13,24 +12,16 @@ const initialState = {
             {id: '2', messege: 'Hay'},
             {id: '3', messege: 'Nice work'},
             {id: '4', messege: 'Good!!!'},
-        ],
-        chengeMessegeText: ''
+        ]
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch(action.type) {
         case NEW_MESSEGE: 
-            let messege = {id: '5', messege: state.chengeMessegeText};
+            let messege = {id: state.messeges.length + 1, messege: action.text};
             return {
                 ...state,
                 messeges: [...state.messeges, messege],
-                chengeMessegeText: ''
-            }
-        
-        case CHENGE_MESSEGE: 
-            return {
-                ...state,
-                chengeMessegeText: action.text
             }
         default:
             return state;
@@ -38,16 +29,10 @@ const dialogsReducer = (state = initialState, action) => {
 
 }
 
-export const addMessegeActionCreator = () => {
+export const addMessegeAC = (text) => {
     return {
-        type: NEW_MESSEGE
-    }
-}
-
-export const chengeMessegeActionCreator = (text) => {
-    return {
-        type: CHENGE_MESSEGE,
-        text: text
+        type: NEW_MESSEGE,
+        text
     }
 }
 

@@ -1,5 +1,5 @@
 import Dialogs from './Dialogs';
-import {chengeMessegeActionCreator, addMessegeActionCreator} from '../../redux/dialogsReducer';
+import { addMessegeAC} from '../../redux/dialogsReducer';
 import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
@@ -17,15 +17,10 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
 
     return {
-        addMessege: () => {
-            dispatch(addMessegeActionCreator());
+        addMessege: (text) => {
+            dispatch(addMessegeAC(text));
         },
-    
-        chengeMessege: (text) => {
-            dispatch(chengeMessegeActionCreator(text));
-        }
     }
-
 }
 
 
