@@ -3,14 +3,44 @@ import { BrowserRouter as Router } from "react-router-dom";
 import UserMessege from './UserMessege/UserMessege';
 import UsersChat from './UsersChat/UsersChat';
 import style from './Dialogs.module.css';
-import { Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
+
+
+const validates = {
+    required: (value) => {
+        if (!value) {
+            return 'required'
+        }
+    },
+    
+    maxLength30: (value) => {
+        if (value.length > 30) {
+            return 'error!!! messege length > 30'
+        }
+    }
+}
+
+
+const rerenderFild = ({input, name, text, placeholder, meta: {touched, error, warning}}) => {
+    
+    return (
+        <div>
+            <div>
+            {touched &&
+                ((error && <span>{error}</span>) ||
+                (warning && <span>{warning}</span>))}
+            </div>
+            <textarea {...input} placeholder={placeholder} name={name} type={text} ></textarea>
+        </div>
+    )
+}
 
 const MessegeForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={'textarea'} name={'myMessege'}></Field>
+                <Field component={rerenderFild} validate={[validates.required, validates.maxLength30]} placeholder={'hello'} name={'myMessege'} type={'text'}></Field>
             </div>
             <div className={style.btnWrap}>
                 <button>push</button>
