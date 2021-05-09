@@ -2,23 +2,8 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {validates} from './../../../utils/validators/validators';
 import style from './../Dialogs.module.css';
+import {rerenderFild} from './../../common/FormsControls/FormsControls';
 
-
-
-
-const rerenderFild = ({input, name, text, placeholder, meta: {touched, error, warning}}) => {
-    
-    return (
-        <div>
-            <div>
-            {touched &&
-                ((error && <span>{error}</span>) ||
-                (warning && <span>{warning}</span>))}
-            </div>
-            <textarea {...input} placeholder={placeholder} name={name} type={text} ></textarea>
-        </div>
-    )
-}
 
 const MessegeForm = (props) => {
     return (
