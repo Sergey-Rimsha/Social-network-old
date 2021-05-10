@@ -1,20 +1,23 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import {validates} from './../../../utils/validators/validators';
+import {validates, maxLengthCreator} from './../../../utils/validators/validators';
 import style from './../Dialogs.module.css';
-import {rerenderFild} from './../../common/FormsControls/FormsControls';
+import {TextareaForm} from './../../common/FormsControls/FormsControls';
+
+const maxLength300 = maxLengthCreator(300);
 
 
-const MessegeForm = (props) => {
+const MessegeForm = (props) => {    
+    
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field 
-                    component={rerenderFild} 
-                    validate={[validates.required, validates.maxLength30]} 
-                    placeholder={'hello'} 
                     name={'myMessege'} 
-                    type={'text'}>
+                    type={'text'}
+                    component={TextareaForm} 
+                    validate={[validates.required, maxLength300]} 
+                    placeholder={'hello'}>                    
                 </Field>
             </div>
             <div className={style.btnWrap}>

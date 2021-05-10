@@ -1,26 +1,8 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import Post from '../Post/Post';
+import {MyPostReduxForm} from './PostForm/PostForm'
 import style from './NewPost.module.css';
 
-
-const MyPostForm = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={'input'} name={'post'} type="text"/>
-            </div>
-            <div>
-                <button>Send</button>
-            </div>
-        </form>
-    )
-}
-
-const MyPostReduxForm = reduxForm({
-    // a unique name for the form
-    form: 'post'
-  })(MyPostForm);
 
 const MyPost = (props) => {
 

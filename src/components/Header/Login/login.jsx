@@ -1,18 +1,30 @@
 import React from 'react';
-
 import {Field, reduxForm} from "redux-form";
+import { maxLengthCreator, validates } from '../../../utils/validators/validators';
+import { InputForm } from '../../common/FormsControls/FormsControls';
+
+
+const maxLength12 = maxLengthCreator(12);
 
 const LoginForm = (props) => {
+
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'login'} component={'input'} name={'login'} ></Field>
+                <Field name={'login'} type={'text'} placeholder={'login'} 
+                        component={InputForm} 
+                        validate={[validates.required, maxLength12]} >
+                </Field>
             </div>
             <div>
-                <Field placeholder={'password'} component={'input'} name={'password'} ></Field>
+                <Field name={'password'} type={'text'} 
+                    placeholder={'password'} 
+                    component={InputForm} 
+                    validate={[validates.required, maxLength12]} >
+                </Field>
             </div>
             <div>
-                <Field component={'input'} type={'checkbox'} name={'rememberMe'}></Field> <span>remember me</span>
+                <Field name={'rememberMe'} type='checkbox' component={InputForm} ></Field> <span>remember me</span>
             </div>
             <div>
                 <button>login</button>
@@ -20,6 +32,12 @@ const LoginForm = (props) => {
         </form>
     )
 }
+
+const LoginReduxForm = reduxForm({
+    // a unique name for the form
+    form: 'login'
+  })(LoginForm);
+
 
 const Login = (props) => {
     const onSubmit = (formData) => {
@@ -35,9 +53,5 @@ const Login = (props) => {
 
 }
 
-const LoginReduxForm = reduxForm({
-    // a unique name for the form
-    form: 'login'
-  })(LoginForm);
 
 export default Login;

@@ -4,11 +4,11 @@ export const validates = {
         if (!value) {
             return 'required'
         }
-    },
-    
-    maxLength30: (value) => {
-        if (value.length > 30) {
-            return 'error!!! messege length > 30'
-        }
     }
+    
+}
+
+export const maxLengthCreator = (maxLength) => (value) => {
+    if (value.length > maxLength) return `Max length is ${maxLength} symbols`;
+    return undefined;
 }
