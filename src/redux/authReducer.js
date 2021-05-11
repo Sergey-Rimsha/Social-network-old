@@ -14,8 +14,7 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATE: 
             return {
                 ...state,
-                ...action.date,
-                isAuth: true
+                ...action.payload,
             }
         default:
             return state;
@@ -23,27 +22,51 @@ const authReducer = (state = initialState, action) => {
 
 }
 
-export const setAuthUserDate = (id, email, login) => {
+export const setAuthUserDate = (id, email, login, isAuth) => {
     return {
         type: SET_USER_DATE,
-        date: {id, email, login}
+        payload: {id, email, login, isAuth}
     }
 }
 
+
         //  redux-thunk
 
-export const setAuth = () => {
-    
+export const setAuth = () => {    
     return (dispatch) => {
         usersApi.getAuth()
-        .then(response => {
-            if (response.resultCode === 0) {
-                let {id, login, email} = response.data;
-                dispatch(setAuthUserDate(id, email, login));
-            }
-        });
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, email, login} = response.data.data;
+                    dispatch(setAuthUserDate(id, email, login, true));
+                }
+            });
 
     }
+}
+
+export const setAuthLogin = (email, password, rememberMe) => {
+    return (dispatch) => {
+        usersApi.login(email, password, rememberMe)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setAuth())
+                }
+            });
+    }
 } 
+
+export const setAuthLogout = () => {
+    return (dispatch) => {
+        usersApi.logout()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                   dispatch(setAuthUserDate(null, null, null, false));
+                } 
+            });
+    }
+}
+
+
 
 export default authReducer;

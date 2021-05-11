@@ -6,7 +6,7 @@ class ProfileUsersWrap extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 2;
+            userId = 16778;
         }   
         this.props.setUserApi(userId);
         this.props.getStatus(userId);
