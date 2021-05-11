@@ -8,10 +8,12 @@ class ProfileUsersWrap extends React.Component {
 
         if (!userId) {
             userId = this.props.userId;
+            if (!userId) {
+                this.props.history.push('/login');
+            }
         }   
         this.props.setUserApi(userId);
         this.props.getStatus(userId);
-        // this.props.setStatus(userId);
     }
 
     render() {
