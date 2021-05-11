@@ -32,6 +32,7 @@ const LoginForm = (props) => {
             <div>
                 <Field name={'rememberMe'} type='checkbox' component={InputForm} ></Field> <span>remember me</span>
             </div>
+                {props.error && <div>{props.error}</div>}
             <div>
                 <button>login</button>
             </div>
@@ -47,7 +48,6 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData.email, formData.password, formData.rememberMe);
         props.setAuthLogin(formData.email, formData.password, formData.rememberMe);
     }
 

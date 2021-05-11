@@ -7,7 +7,8 @@ import { compose } from 'redux';
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    userId: state.auth.id
 });
 
 
