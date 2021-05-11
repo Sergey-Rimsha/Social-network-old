@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, withRouter} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -21,9 +21,8 @@ class App extends Component {
     }
 
     render() {
-
-        if (!this.props.initialezed) {
-            return <Preloader />
+        if (!this.props.initialized) {
+            return <Preloader/>
         }
 
         return (
@@ -46,6 +45,7 @@ class App extends Component {
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
+
 
 export default compose(
     withRouter,
