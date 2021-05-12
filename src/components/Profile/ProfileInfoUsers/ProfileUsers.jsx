@@ -2,7 +2,7 @@ import React from 'react';
 import style from './../Profile.module.css';
 import userPhoto from './../../../assets/images/ava_default.jpg';
 import Preloader from './../../../components/common/Preloader/Preloader';
-import ProfileStatus from '../ProfileStatus/ProfileStatus';
+import ProfileStatusHooks from '../ProfileStatus/ProfileStatusHooks';
 
 
 const ProfileUsersWrap = (props) => {
@@ -18,7 +18,7 @@ const ProfileUsersWrap = (props) => {
                 </div>
                 <div className={style.userInfo}>
                     <div>{props.profile.fullName}</div>
-                    <ProfileStatus status={props.status} setStatus={props.setStatus}/>
+                    <ProfileStatusHooks status={props.status} setStatus={props.setStatus}/>
                     <div>Date of Britch: <span>7.08.1994</span></div>
                     <div>Education: <span>БГПК</span></div>
                     <div>Web Site: <span>Vk.com</span></div>
