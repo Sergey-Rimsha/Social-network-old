@@ -69,30 +69,25 @@ export const setProfileStatus = (status) => {
     //  redux-thunk
 
 export const setUserApi = (userId) => {
-    return (dispatch) => {
-        usersApi.getProfile(userId)
-            .then(response => {
-                dispatch(setUsersProfile(response));
-            });
+    return async (dispatch) => {
+        let response = await usersApi.getProfile(userId);
+        dispatch(setUsersProfile(response));
+
     }
 }
 
 export const setStatus = (status) => {
-    return (dispatch) => {
-        usersApi.putProfileStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setProfileStatus(status));
-                }
-            })
+    return async (dispatch) => {
+        let response = await usersApi.putProfileStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setProfileStatus(status));
+        }
     }
 }
 export const getStatus = (userId) => {
-    return (dispatch) => {
-        usersApi.getProfileStatus(userId)
-            .then(response => {
-                dispatch(setProfileStatus(response.data));
-            })
+    return async (dispatch) => {
+        let response = await usersApi.getProfileStatus(userId);
+        dispatch(setProfileStatus(response.data));
     }
 }
 

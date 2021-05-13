@@ -34,40 +34,36 @@ export const setAuthUserDate = (id, email, login, isAuth) => {
         //  redux-thunk
 
 export const setAuth = () => {    
-    return (dispatch) => {
-        usersApi.getAuth()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, email, login} = response.data.data;
-                    dispatch(setAuthUserDate(id, email, login, true));
-                }
-            });
+    return async (dispatch) => {
+        let response = await usersApi.getAuth();            
+        if (response.data.resultCode === 0) {
+            let {id, email, login} = response.data.data;
+            dispatch(setAuthUserDate(id, email, login, true));
+        }
 
     }
 }
 
 export const setAuthLogin = (email, password, rememberMe) => {
-    return (dispatch) => {
-        usersApi.login(email, password, rememberMe)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setAuth())
-                } else {
-                    let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-                    dispatch(stopSubmit('login', {_error: message}))
-                }
-            });
+    return async (dispatch) => {
+        let response = await usersApi.login(email, password, rememberMe);            
+        if (response.data.resultCode === 0) {
+            dispatch(setAuth())
+        } else {
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            dispatch(stopSubmit('login', {_error: message}))
+        }
     }
+    
 } 
 
 export const setAuthLogout = () => {
-    return (dispatch) => {
-        usersApi.logout()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                   dispatch(setAuthUserDate(null, null, null, false));
-                } 
-            });
+    return async (dispatch) => {
+        let response = await usersApi.logout();            
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserDate(null, null, null, false));
+        } 
+    
     }
 }
 

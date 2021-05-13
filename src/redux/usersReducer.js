@@ -123,43 +123,33 @@ export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS
     //  redux-thunk
 
 export const getUsers = (carrentPage, pageSize) => {
-
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setFetching(true));
-        usersApi.getUsersPage(carrentPage, pageSize)
-            .then(response => {
+        let response = await usersApi.getUsersPage(carrentPage, pageSize);
                 dispatch(setFetching(false));
                 dispatch(setUsers(response.items));
                 dispatch(setTotalUsersCount(response.totalCount));
-            });
-
     }
 } 
 export const follow = (userId) => {
-
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
-        usersApi.postFollow(userId)
-            .then(response => {
+        let response = await usersApi.postFollow(userId)
                 if (response.resultCode === 0) {
                     dispatch(followUser(userId));
                 }
                 dispatch(toggleFollowingProgress(false, userId));
-            });
-
     }
 } 
 export const unfollow = (userId) => {
-
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
-        usersApi.delFollow(userId)
-            .then(response => {
-                if (response.resultCode === 0) {
-                    dispatch(unFollowUser(userId));
-                }
-                dispatch(toggleFollowingProgress(false, userId));
-            });
+        let response = await usersApi.delFollow(userId);
+        if (response.resultCode === 0) {
+            dispatch(unFollowUser(userId));
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+
 
     }
 } 
