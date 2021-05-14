@@ -1,4 +1,4 @@
-import usersApi from './../api/api';
+import {authAPI} from './../api/api';
 import {stopSubmit} from 'redux-form';
 
 const SET_USER_DATE = 'SET_USER_DATE';
@@ -35,7 +35,7 @@ export const setAuthUserDate = (id, email, login, isAuth) => {
 
 export const setAuth = () => {    
     return async (dispatch) => {
-        let response = await usersApi.getAuth();            
+        let response = await authAPI.me();            
         if (response.data.resultCode === 0) {
             let {id, email, login} = response.data.data;
             dispatch(setAuthUserDate(id, email, login, true));
@@ -46,7 +46,7 @@ export const setAuth = () => {
 
 export const setAuthLogin = (email, password, rememberMe) => {
     return async (dispatch) => {
-        let response = await usersApi.login(email, password, rememberMe);            
+        let response = await authAPI.login(email, password, rememberMe);            
         if (response.data.resultCode === 0) {
             dispatch(setAuth())
         } else {
@@ -59,7 +59,7 @@ export const setAuthLogin = (email, password, rememberMe) => {
 
 export const setAuthLogout = () => {
     return async (dispatch) => {
-        let response = await usersApi.logout();            
+        let response = await authAPI.logout();            
         if (response.data.resultCode === 0) {
             dispatch(setAuthUserDate(null, null, null, false));
         } 

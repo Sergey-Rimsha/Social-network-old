@@ -14,14 +14,21 @@
 .userPhoto {
     margin-right: 15px;
     background-color:hotpink;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 .userInfo {
-    height: 150px;
+    height: auto;
+    width: 300px;
     background-color:indigo;
     color: white;
+    padding-bottom: 10px;
+}
+
+.userInfo div {
+    margin-left: 15px;
+    margin-top: 10px;
 }
 
 .userPhoto img {

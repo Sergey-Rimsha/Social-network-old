@@ -1,4 +1,4 @@
-import usersApi from './../api/api';
+import {profileAPI} from './../api/api';
 
 const NEW_POST = 'NEW-POST';
 const CHENGE_POST = 'CHENGE-POST';
@@ -70,7 +70,7 @@ export const setProfileStatus = (status) => {
 
 export const setUserApi = (userId) => {
     return async (dispatch) => {
-        let response = await usersApi.getProfile(userId);
+        let response = await profileAPI.getProfile(userId);
         dispatch(setUsersProfile(response));
 
     }
@@ -78,7 +78,7 @@ export const setUserApi = (userId) => {
 
 export const setStatus = (status) => {
     return async (dispatch) => {
-        let response = await usersApi.putProfileStatus(status)
+        let response = await profileAPI.putProfileStatus(status)
         if (response.data.resultCode === 0) {
             dispatch(setProfileStatus(status));
         }
@@ -86,7 +86,7 @@ export const setStatus = (status) => {
 }
 export const getStatus = (userId) => {
     return async (dispatch) => {
-        let response = await usersApi.getProfileStatus(userId);
+        let response = await profileAPI.getProfileStatus(userId);
         dispatch(setProfileStatus(response.data));
     }
 }

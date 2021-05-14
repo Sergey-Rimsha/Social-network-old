@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Profile.module.css';
 import MyPostContainer from './MyPost/MyPostContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import PropfileUsersContainer from './ProfileInfoUsers/PropfileUsersContainer';
+import PropfileUsersContainer from './ProfileUsers/PropfileUsersContainer';
 
 
 
@@ -10,7 +10,7 @@ const Profile = () => {
     return (
         <div>
             <div className={style.wrap}>
-                <ProfileInfo />
+                {/* <ProfileInfo /> */}
             </div>
             <PropfileUsersContainer />
             <MyPostContainer/>

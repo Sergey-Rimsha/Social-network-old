@@ -8,50 +8,11 @@ const instance = axios.create({
     }
 }); 
 
-let usersApi = {
-    getProfile(userId) {
-        return ( 
-            instance.get(`profile/${userId}`)
-                .then(response => response.data)
-        )
-    },
 
-    getAuth() {
+export let authAPI = {
+    me() {
         return (            
             instance.get(`auth/me`)
-        )
-    },
-
-    getUsersPage(carrentPage, pageSize) {
-        return (
-            instance.get(`users?page=${carrentPage}&count=${pageSize}`)
-                .then(response => response.data)
-        )
-    },
-
-    delFollow(id) {
-        return (
-            instance.delete(`follow/${id}`)
-                .then(response => response.data)    
-        )
-    },
-
-    postFollow(id) {
-        return (
-            instance.post(`follow/${id}`)
-                .then(response => response.data)
-        )
-    },
-
-    putProfileStatus(status) {
-        return (
-            instance.put(`profile/status`, {status})
-        )
-    },
-    
-    getProfileStatus(userId) {
-        return (
-            instance.get(`profile/status/${userId}`)
         )
     },
     login(email, password, rememberMe = false) {
@@ -67,5 +28,49 @@ let usersApi = {
 
 }
 
+export let usersAPI = {
+    getUsersPage(carrentPage, pageSize) {
+        return (
+            instance.get(`users?page=${carrentPage}&count=${pageSize}`)
+                .then(response => response.data)
+        )
+    }
 
-export default usersApi;
+}
+
+export let profileAPI = {
+    getProfile(userId) {
+        return ( 
+            instance.get(`profile/${userId}`)
+                .then(response => response.data)
+        )
+    },
+
+    putProfileStatus(status) {
+        return (
+            instance.put(`profile/status`, {status})
+        )
+    },
+    
+    getProfileStatus(userId) {
+        return (
+            instance.get(`profile/status/${userId}`)
+        )
+    },
+}
+
+export let followAPI = {
+    delFollow(id) {
+        return (
+            instance.delete(`follow/${id}`)
+                .then(response => response.data)    
+        )
+    },
+
+    postFollow(id) {
+        return (
+            instance.post(`follow/${id}`)
+                .then(response => response.data)
+        )
+    },
+}
