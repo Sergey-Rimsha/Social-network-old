@@ -32,6 +32,9 @@ const ProfileUsers = (props) => {
             <div className={style.userWrap}>
                 <div className={style.userPhoto}>
                     <img src={props.profile.photos.large || userPhoto} alt="user_photo"></img>
+                    <div>
+                        <input name={'newPhotoFile'} type={'file'} />
+                    </div>
                 </div>
                 <div className={style.userInfo}>
                     <div><h3>{props.profile.fullName}</h3> </div>
