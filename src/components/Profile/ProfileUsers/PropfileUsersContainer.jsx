@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileUsers from './ProfileUsers';
 import { connect } from 'react-redux';
-import {setUserApi, setStatus, getStatus} from './../../../redux/profileReducer';
+import {setUserApi, setStatus, getStatus, savePhoto} from './../../../redux/profileReducer';
 import { withRouter } from 'react-router';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -24,7 +24,10 @@ class ProfileUsersWrap extends React.Component {
     render() {
         return (
             <>
-                <ProfileUsers {...this.props} profile={this.props.profile}/>
+                <ProfileUsers 
+                    {...this.props} 
+                    isOwner={!this.props.match.params.userId}
+                    profile={this.props.profile}/>
             </>
         )
     }
@@ -38,7 +41,7 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-    connect(mapStateToProps, {setUserApi, setStatus, getStatus}),
+    connect(mapStateToProps, {setUserApi, setStatus, getStatus, savePhoto}),
     withRouter,
     withAuthRedirect,
 )(ProfileUsersWrap);

@@ -26,15 +26,22 @@ const ProfileUsers = (props) => {
 
     webSite();
 
+    const addFilePhoto = (e) => {
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
+        }         
+    }
 
-    console.log(props.profile.contacts[1]);
     return (
             <div className={style.userWrap}>
                 <div className={style.userPhoto}>
                     <img src={props.profile.photos.large || userPhoto} alt="user_photo"></img>
-                    <div>
-                        <input name={'newPhotoFile'} type={'file'} />
-                    </div>
+                    {props.isOwner && 
+                        <div>
+                            <input onChange={addFilePhoto} name={'newPhotoFile'} type={'file'} />
+                        </div>
+                    }
+
                 </div>
                 <div className={style.userInfo}>
                     <div><h3>{props.profile.fullName}</h3> </div>
