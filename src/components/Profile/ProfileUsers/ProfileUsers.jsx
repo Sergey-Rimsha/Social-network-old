@@ -33,40 +33,42 @@ const ProfileUsers = (props) => {
     }
 
     return (
-            <div className={style.userWrap}>
-                <div className={style.userPhoto}>
-                    <img src={props.profile.photos.large || userPhoto} alt="user_photo"></img>
-                    {props.isOwner && 
+        <div className={style.userWrap}>
+            <div className={style.userPhoto}>
+                <img src={props.profile.photos.large || userPhoto} alt="user_photo"></img>
+                {
+                    props.isOwner && 
                         <div>
                             <input onChange={addFilePhoto} name={'newPhotoFile'} type={'file'} />
                         </div>
-                    }
-
-                </div>
-                <div className={style.userInfo}>
-                    <div><h3>{props.profile.fullName}</h3> </div>
-                    <ProfileStatusHooks status={props.status} setStatus={props.setStatus}/>
+                }
+            </div>
+            <div className={style.userInfo}>
+                <div><h3>{props.profile.fullName}</h3></div>
+                <ProfileStatusHooks 
+                    status={props.status} 
+                    setStatus={props.setStatus} />
+                <div>
+                    <span>About Me:</span>
                     <div>
-                        <span>About Me:</span>
-                        <div>
-                            {props.profile.aboutMe || `---`}
-                        </div>
-                        <div>Date of Britch: 7.08.1994</div>
-                        <div>Education: БГПК</div>
-                    </div>
-                    
-                    <div> 
-                        <span>Vebsite:</span>
-                        {
-                            webSiteArr.map( (item) => {
-                                return (                                
-                                    <div>{item.name}: <span>{item.value}</span></div>   
-                                )
-                            })
-                        }
-                    </div>
+                        {props.profile.aboutMe || `---`}
+                    </div>                        
+                </div>                    
+                <div> 
+                    <span>Vebsite:</span>
+                    {
+                        webSiteArr.map( (item) => {
+                            return (                                
+                                <div>{item.name}: <span>{item.value}</span></div>   
+                            )
+                        })
+                    }
+                </div>
+                <div>
+                    <button>Settings</button>
                 </div>
             </div>
+        </div>
     )
 }
 

@@ -13,7 +13,6 @@ const Header = (props) => {
                 {props.isAuth
                     ? <div>{props.login} - <button onClick={props.setAuthLogout}>Log out</button> </div>
                     : <NavLink to={'/login'}> login </NavLink> }
-                    {console.log(props)}
             </div>
 
         </header>
