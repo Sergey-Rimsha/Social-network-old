@@ -45,7 +45,6 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: {...state.profile, photos: action.photos }
             }
-        
         default:
             return state;
     }
@@ -78,6 +77,7 @@ export const setSavePhoto = (photos) => {
         photos
     }
 }
+
 
     //  redux-thunk
 
@@ -113,5 +113,13 @@ export const savePhoto = (file) => {
     }
 }
 
+export const setProfile = (profile) => {
+    return async (dispatch) => {
+        let response = await profileAPI.putProfile(profile);
+        if (response.data.resultCode === 0) {
+            dispatch(setUsersProfile(response.data))
+        }
+    }
+}
 
 export default profileReducer;

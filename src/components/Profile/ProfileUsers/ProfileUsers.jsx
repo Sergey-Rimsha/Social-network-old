@@ -3,6 +3,7 @@ import style from './../Profile.module.css';
 import userPhoto from './../../../assets/images/ava_default.jpg';
 import Preloader from './../../../components/common/Preloader/Preloader';
 import ProfileStatusHooks from '../ProfileStatus/ProfileStatusHooks';
+import ProfileUsersInfo from './ProfileUsersInfo/ProfileUsersInfo';
 
 
 const ProfileUsers = (props) => {
@@ -12,20 +13,7 @@ const ProfileUsers = (props) => {
             <Preloader />
         )
     }
-    let webSiteArr = [];
-
-    const webSite = () => {
-        let obj = props.profile.contacts;
-        
-        for (let key in obj) {
-            if (obj[key]) {                
-                webSiteArr.push({name: key, value: obj[key]});
-            }
-        }
-    }
-
-    webSite();
-
+    
     const addFilePhoto = (e) => {
         if (e.target.files.length) {
             props.savePhoto(e.target.files[0]);
@@ -47,26 +35,9 @@ const ProfileUsers = (props) => {
                 <div><h3>{props.profile.fullName}</h3></div>
                 <ProfileStatusHooks 
                     status={props.status} 
-                    setStatus={props.setStatus} />
-                <div>
-                    <span>About Me:</span>
-                    <div>
-                        {props.profile.aboutMe || `---`}
-                    </div>                        
-                </div>                    
-                <div> 
-                    <span>Vebsite:</span>
-                    {
-                        webSiteArr.map( (item) => {
-                            return (                                
-                                <div>{item.name}: <span>{item.value}</span></div>   
-                            )
-                        })
-                    }
-                </div>
-                <div>
-                    <button>Settings</button>
-                </div>
+                    setStatus={props.setStatus}
+                    isOwner={props.isOwner} />
+                <ProfileUsersInfo profile={props.profile} setProfile={props.setProfile} />
             </div>
         </div>
     )

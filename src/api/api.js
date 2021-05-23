@@ -46,6 +46,12 @@ export let profileAPI = {
         )
     },
 
+    putProfile(profile) {
+        return (
+            instance.put(`profile`, profile)
+        )
+    },
+
     putProfileStatus(status) {
         return (
             instance.put(`profile/status`, {status})
