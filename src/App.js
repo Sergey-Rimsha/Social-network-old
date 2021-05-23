@@ -1,4 +1,4 @@
-import React, {Component, lazy, Suspense } from 'react';
+import React, {Component, lazy} from 'react';
 import {Route, withRouter} from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
