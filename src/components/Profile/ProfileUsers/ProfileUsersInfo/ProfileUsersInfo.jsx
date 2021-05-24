@@ -1,22 +1,29 @@
 import React,{useState} from 'react';
-import ProfileDataForm from './ProfileDataForm.';
+import ProfileReduxDataForm from './ProfileDataForm';
 
 const ProfileUsersInfo = (props) => {
 
     let [editMode, setEditMode] = useState(false);
 
     const onSubmit = (formData) => {
-        saveProfile(formData).then(
-            () => {
-                setEditMode(false);
-            }
-        );
+        setEditMode(false)
+        props.setProfile()
     }
+
+    // const onSubmit = (formData) => {
+    //     saveProfile(formData).then(
+    //         () => {
+    //             setEditMode(false);
+    //         }
+    //     );
+    // }
 
     return (
         <>
             {editMode ? 
-                <ProfileDataForm profile={props.profile}/> : 
+                <ProfileReduxDataForm 
+                    onSubmit={onSubmit}
+                    profile={props.profile}/> : 
                 <ProfileData 
                     profile={props.profile} 
                     goToEditMode={() => setEditMode(true)}
@@ -29,7 +36,6 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return (
         <>
             <div>
-                {isOwner && <div> <button onClick={goToEditMode} >edit</button> </div> }
                 <span>About Me:</span>
                 <div>
                     {profile.aboutMe || `---`}
@@ -49,13 +55,21 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
                     })
                 }
             </div>
+                {isOwner && <div> <button onClick={goToEditMode} >edit</button> </div> }
         </>
     )
 }
 
 const Contacts = ({contactTitle, contactValue}) => {
     return (
-        <div>{contactTitle}: <span>{contactValue}</span></div>
+        
+        <div>
+            {
+                !contactValue ? 
+                '': <div>{contactTitle}: <span>{contactValue}</span></div>
+            }
+            
+        </div>
     )
 }
 

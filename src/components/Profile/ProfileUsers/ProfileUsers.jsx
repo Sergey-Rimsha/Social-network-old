@@ -37,7 +37,10 @@ const ProfileUsers = (props) => {
                     status={props.status} 
                     setStatus={props.setStatus}
                     isOwner={props.isOwner} />
-                <ProfileUsersInfo profile={props.profile} setProfile={props.setProfile} />
+                <ProfileUsersInfo 
+                    profile={props.profile} 
+                    setProfile={props.setProfile}
+                    isOwner={props.isOwner} />
             </div>
         </div>
     )
