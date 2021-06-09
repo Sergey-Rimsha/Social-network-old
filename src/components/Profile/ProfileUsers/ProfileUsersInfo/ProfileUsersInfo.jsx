@@ -6,8 +6,9 @@ const ProfileUsersInfo = (props) => {
     let [editMode, setEditMode] = useState(false);
 
     const onSubmit = (formData) => {
-        setEditMode(false)
-        props.setProfile()
+        setEditMode(false);
+        props.setProfile(formData);
+        console.log(formData);
     }
 
     // const onSubmit = (formData) => {

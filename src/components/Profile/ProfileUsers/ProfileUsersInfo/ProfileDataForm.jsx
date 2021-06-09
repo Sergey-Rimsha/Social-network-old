@@ -16,6 +16,12 @@ const ProfileDataForm = (props) => {
             <div>
                 <span>About Me:</span>
                 <div>
+                    <Field name={'fullName'} 
+                        type={'text'} 
+                        placeholder={profile.fullName} 
+                        component={InputForm} />
+                </div>
+                <div>
                     <Field name={'aboutMe'} 
                         type={'text'} 
                         placeholder={profile.aboutMe} 
@@ -24,13 +30,13 @@ const ProfileDataForm = (props) => {
                 </div>
                 <div>
                     <span>looking for a job:</span>
-                    <Field name={'job'} 
+                    <Field name={'lookingForAJob'} 
                         type={'checkbox'} 
                         component={InputForm} />
                 </div>
                 <div>
                     my professional skills:
-                    <Field name={'skills'} 
+                    <Field name={'lookingForAJobDescription'} 
                         type={'text'} 
                         placeholder={profile.lookingForAJobDescription && 'professional skills'} 
                         component={TextareaForm} 
