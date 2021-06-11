@@ -14,19 +14,17 @@ const ProfileDataForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>  
             <div>
-                <span>About Me:</span>
                 <div>
+                    <span>fullName:</span>
                     <Field name={'fullName'} 
                         type={'text'} 
-                        placeholder={profile.fullName} 
                         component={InputForm} />
                 </div>
+                <span>About Me:</span>
                 <div>
                     <Field name={'aboutMe'} 
                         type={'text'} 
-                        placeholder={profile.aboutMe} 
-                        component={TextareaForm} 
-                        validate={[validates.required, maxLength12]} />
+                        component={TextareaForm} />
                 </div>
                 <div>
                     <span>looking for a job:</span>
@@ -38,9 +36,7 @@ const ProfileDataForm = (props) => {
                     my professional skills:
                     <Field name={'lookingForAJobDescription'} 
                         type={'text'} 
-                        placeholder={profile.lookingForAJobDescription && 'professional skills'} 
-                        component={TextareaForm} 
-                        validate={[validates.required, maxLength12]} />
+                        component={TextareaForm} />
                 </div>
             </div>                    
             <div> 

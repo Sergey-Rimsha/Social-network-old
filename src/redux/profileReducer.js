@@ -113,11 +113,13 @@ export const savePhoto = (file) => {
     }
 }
 
-export const setProfile = (profile) => {
-    return async (dispatch) => {
-        let response = await profileAPI.putProfile(profile);
+export const saveProfile = (profile) => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.id;
+        const response = await profileAPI.putSaveProfile(profile);
+
         if (response.data.resultCode === 0) {
-            dispatch(setUsersProfile(response.data))
+            dispatch(setUserApi(userId))
         }
     }
 }

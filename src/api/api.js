@@ -46,7 +46,7 @@ export let profileAPI = {
         )
     },
 
-    putProfile(profile) {
+    putSaveProfile(profile) {
         return (
             instance.put(`profile`, profile)
         )

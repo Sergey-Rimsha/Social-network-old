@@ -5,30 +5,32 @@ const ProfileUsersInfo = (props) => {
 
     let [editMode, setEditMode] = useState(false);
 
-    const onSubmit = (formData) => {
-        setEditMode(false);
-        props.setProfile(formData);
-        console.log(formData);
-    }
-
     // const onSubmit = (formData) => {
-    //     saveProfile(formData).then(
-    //         () => {
-    //             setEditMode(false);
-    //         }
-    //     );
+    //     props.setProfile(formData);
+    //     console.log(formData);
+    //     setEditMode(false);
     // }
+
+    const onSubmit = (formData) => {
+        props.saveProfile(formData)
+            .then(() => {
+                setEditMode(false);
+                console.log(formData);
+            }
+        );
+    }
 
     return (
         <>
-            {editMode ? 
-                <ProfileReduxDataForm 
+            { editMode 
+                ? <ProfileReduxDataForm
+                    initialValues={props.profile} 
                     onSubmit={onSubmit}
-                    profile={props.profile}/> : 
-                <ProfileData 
+                    profile={props.profile}/> 
+                : <ProfileData 
                     profile={props.profile} 
                     goToEditMode={() => setEditMode(true)}
-                    isOwner={props.isOwner} />}
+                    isOwner={props.isOwner} /> }
         </>
     )
 }
@@ -37,6 +39,7 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return (
         <>
             <div>
+                <div><h3>{profile.fullName}</h3></div>
                 <span>About Me:</span>
                 <div>
                     {profile.aboutMe || `---`}
