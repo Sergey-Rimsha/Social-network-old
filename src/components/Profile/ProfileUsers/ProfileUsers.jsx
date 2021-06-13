@@ -18,6 +18,8 @@ const ProfileUsers = (props) => {
         <div className={style.userWrap}>
             <ProfilePhotos profile={props.profile} isOwner={props.isOwner}/>
             <div className={style.userInfo}>
+                <div><h3>{props.profile.fullName}</h3></div>
+                <div>Set status:</div>
                 <ProfileStatusHooks 
                     status={props.status} 
                     setStatus={props.setStatus}

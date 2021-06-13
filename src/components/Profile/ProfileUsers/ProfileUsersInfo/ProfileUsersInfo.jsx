@@ -39,7 +39,6 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return (
         <>
             <div>
-                <div><h3>{profile.fullName}</h3></div>
                 <span>About Me:</span>
                 <div>
                     {profile.aboutMe || `---`}

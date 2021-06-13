@@ -61,9 +61,9 @@ const Contacts = ({contactTitle, contactValue}) => {
         <div>
             {contactTitle}: 
             <span>
-                <Field name={contactTitle} 
+                <Field name={`contacts.${contactTitle}`} 
                     type={'https'} 
-                    placeholder={contactValue || 'https://...'} 
+                    // placeholder={contactValue || 'https://...'} 
                     component={InputForm} />
             </span>
         </div>
