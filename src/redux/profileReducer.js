@@ -1,10 +1,13 @@
 import {profileAPI} from './../api/api';
+import {weatherAPI} from './../api/apiWeather';
 
 const NEW_POST = 'NEW-POST';
 const CHENGE_POST = 'CHENGE-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
+const CONTACTS_ERROR = 'CONTACTS_ERROR';
+const SET_WEATHER = 'SET_WEATHER';
 
 let initialState = {
     posts: [
@@ -14,7 +17,9 @@ let initialState = {
         {id: '4', post: 'Good!!! work', like: 17},
     ],
     profile: null,
-    status: ''
+    status: '',
+    contactsError: null,
+    weather: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -44,6 +49,16 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: {...state.profile, photos: action.photos }
+            }
+        case CONTACTS_ERROR:
+            return {
+                ...state,
+                contactsError: action.error
+            }
+        case SET_WEATHER:
+            return {
+                ...state,
+                weather: action.weather
             }
         default:
             return state;
@@ -77,6 +92,21 @@ export const setSavePhoto = (photos) => {
         photos
     }
 }
+
+export const setContactsError = (error) => {
+    return {
+        type: CONTACTS_ERROR,
+        error
+    }
+}
+
+export const setWeather = (weather) => {
+    return {
+        type: SET_WEATHER,
+        weather
+    }
+}
+
 
 
     //  redux-thunk
@@ -120,8 +150,20 @@ export const saveProfile = (profile) => {
 
         if (response.data.resultCode === 0) {
             dispatch(setUserApi(userId))
+            dispatch(setContactsError(null))
+        } else {
+            dispatch(setContactsError(response.data.messages[0]))
         }
     }
 }
+
+export const setWeatherThunk = (weather) => {
+    return async (dispatch) => {
+        const response = await weatherAPI.getWeather();
+        console.log(response);
+    }
+}
+
+setWeatherThunk();
 
 export default profileReducer;

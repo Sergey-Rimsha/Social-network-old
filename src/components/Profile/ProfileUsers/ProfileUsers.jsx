@@ -27,7 +27,8 @@ const ProfileUsers = (props) => {
                 <ProfileUsersInfo 
                     profile={props.profile} 
                     saveProfile={props.saveProfile}
-                    isOwner={props.isOwner} />
+                    isOwner={props.isOwner} 
+                    contactsError={props.contactsError} />
             </div>
         </div>
     )

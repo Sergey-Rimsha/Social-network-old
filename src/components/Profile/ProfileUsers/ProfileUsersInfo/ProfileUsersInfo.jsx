@@ -5,17 +5,11 @@ const ProfileUsersInfo = (props) => {
 
     let [editMode, setEditMode] = useState(false);
 
-    // const onSubmit = (formData) => {
-    //     props.setProfile(formData);
-    //     console.log(formData);
-    //     setEditMode(false);
-    // }
-
     const onSubmit = (formData) => {
         props.saveProfile(formData)
             .then(() => {
-                setEditMode(false);
-                console.log(formData);
+                console.log(props.contactsError);
+                // setEditMode(false);
             }
         );
     }
@@ -64,14 +58,11 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
 }
 
 const Contacts = ({contactTitle, contactValue}) => {
-    return (
-        
+    return (        
         <div>
-            {
-                !contactValue ? 
-                '': <div>{contactTitle}: <span>{contactValue}</span></div>
-            }
-            
+            {!contactValue 
+            ? ''
+            : <div>{contactTitle}: <span>{contactValue}</span></div>}
         </div>
     )
 }
