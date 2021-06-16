@@ -31,10 +31,8 @@ export const setWeatherThunk = (weather) => {
     return async (dispatch) => {
         const response = await weatherAPI.getWeather(weather);
         dispatch(setWeather(response))
-        console.log(response);
     }
 }
 
-setWeatherThunk();
 
 export default weatherReducer;

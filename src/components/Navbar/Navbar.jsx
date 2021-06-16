@@ -33,6 +33,11 @@ const Navbar = () => {
                     Music
                 </div>
             </NavLink>
+            <NavLink to = "/weather" activeClassName={style.active}>
+                <div>
+                    Weather
+                </div>
+            </NavLink>
             <NavLink to = "/settings" activeClassName={style.active}>
                 <div>
                     Settings

@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import {initializeApp} from './redux/appReducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { withSuspense } from './hoc/withSuspense';
+import WeatherContainer from './components/Weather/WeatherContainer';
 
 
 const Profile = lazy(() => import('./components/Profile/Profile'));
@@ -34,10 +35,11 @@ class App extends Component {
                     <HeaderContainer />
                     <Navbar />
                     <div className='content'>                          
-                            <Route path={`/profile/:userId?`} component={withSuspense(Profile)} />    
-                            <Route path={`/dialogs`} component={withSuspense(DialogsContainer)} />
-                            <Route path={`/users`} component={withSuspense(UsersContainer)} />
-                            <Route path={`/login`} component={Login} />
+                        <Route path={`/profile/:userId?`} component={withSuspense(Profile)} />    
+                        <Route path={`/dialogs`} component={withSuspense(DialogsContainer)} />
+                        <Route path={`/users`} component={withSuspense(UsersContainer)} />
+                        <Route path={`/login`} component={Login} />
+                        <Route path={`/weather`} component={WeatherContainer} />
                     </div>
                 </div>
             </div>

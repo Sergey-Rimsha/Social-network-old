@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileUsers from './ProfileUsers';
 import { connect } from 'react-redux';
-import {setUserApi, setStatus, getStatus, savePhoto, saveProfile, setWeatherThunk} from './../../../redux/profileReducer';
+import {setUserApi, setStatus, getStatus, savePhoto, saveProfile} from './../../../redux/profileReducer';
 import { withRouter } from 'react-router';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -23,7 +23,6 @@ class ProfileUsersWrap extends React.Component {
 
     componentDidMount() {
         this.refreshProfile();
-        this.props.setWeatherThunk();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -54,7 +53,7 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-    connect(mapStateToProps, {setUserApi, setStatus, getStatus, savePhoto, saveProfile, setWeatherThunk}),
+    connect(mapStateToProps, {setUserApi, setStatus, getStatus, savePhoto, saveProfile}),
     withRouter,
     withAuthRedirect,
 )(ProfileUsersWrap);
