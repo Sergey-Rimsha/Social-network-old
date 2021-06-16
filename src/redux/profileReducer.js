@@ -1,5 +1,4 @@
 import {profileAPI} from './../api/api';
-import {weatherAPI} from './../api/apiWeather';
 
 const NEW_POST = 'NEW-POST';
 const CHENGE_POST = 'CHENGE-POST';
@@ -7,7 +6,6 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 const CONTACTS_ERROR = 'CONTACTS_ERROR';
-const SET_WEATHER = 'SET_WEATHER';
 
 let initialState = {
     posts: [
@@ -19,7 +17,6 @@ let initialState = {
     profile: null,
     status: '',
     contactsError: null,
-    weather: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -54,11 +51,6 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 contactsError: action.error
-            }
-        case SET_WEATHER:
-            return {
-                ...state,
-                weather: action.weather
             }
         default:
             return state;
@@ -97,13 +89,6 @@ export const setContactsError = (error) => {
     return {
         type: CONTACTS_ERROR,
         error
-    }
-}
-
-export const setWeather = (weather) => {
-    return {
-        type: SET_WEATHER,
-        weather
     }
 }
 
@@ -157,14 +142,5 @@ export const saveProfile = (profile) => {
     }
 }
 
-export const setWeatherThunk = (weather) => {
-    return async (dispatch) => {
-        const response = await weatherAPI.getWeather(weather);
-        dispatch(setWeather(response))
-        console.log(response);
-    }
-}
-
-setWeatherThunk();
 
 export default profileReducer;

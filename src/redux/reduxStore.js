@@ -6,6 +6,7 @@ import authReducer from "./authReducer";
 import dialogsReducer from "./dialogsReducer";
 import profileReducer from "./profileReducer";
 import usersReducer from "./usersReducer";
+import weatherReducer from "./weatherReducer";
 
 
 let redusers = combineReducers({
@@ -14,7 +15,8 @@ let redusers = combineReducers({
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
-    app: appReducer
+    app: appReducer,
+    weather: weatherReducer
 });
 
 
