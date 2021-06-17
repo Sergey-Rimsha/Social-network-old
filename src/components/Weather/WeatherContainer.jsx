@@ -6,26 +6,32 @@ import {setWeatherThunk} from './../../redux/weatherReducer';
 
 const WeatherContainer = (props) => {
 
-    let [state, setState] = useState()
+    let [state, setState] = useState(props.weather)
 
     useEffect(() => {
-        // props.setWeatherThunk();
+        console.log('render')
+        props.setWeatherThunk()
         // console.log(props.weather)
-        console.log(state)
-    });
+        // console.log(state)
+    }, []);
 
+    const weatherApi = () => {
+        props.setWeatherThunk()
+        setState(props.weather);
+        console.log('get API')
+    }
 
     return (
         <div>
-            Weather
-            {/* {props.weather} */}
-            <button onClick={() => setState()} >getWeather</button>
+            Weather City:
+            {props.weather.name}
+            <button onClick={() => weatherApi()} >getWeather</button>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    weather: state.weather
+    weather: state.weather.weather
 });
 
 export default compose(

@@ -30,7 +30,12 @@ export const setWeather = (weather) => {
 export const setWeatherThunk = (weather) => {
     return async (dispatch) => {
         const response = await weatherAPI.getWeather(weather);
-        dispatch(setWeather(response))
+        if (response.status === 200) {
+            dispatch(setWeather(response.data))
+            console.log(response.data)
+        } else {
+            console.log(`Weather API error`);
+        }
     }
 }
 
