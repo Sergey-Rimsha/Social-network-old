@@ -13,11 +13,14 @@ const instance = axios.create({
 export const weatherAPI = {
     key: '5c7a7637fd830e172ecaa79e42f14f10',
 
-    getWeather() {
+    getWeather(cityName) {
         return (            
-            instance.get(`api.openweathermap.org/data/2.5/weather?id=630376&appid=${this.key}`)
+            instance.get(`api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.key}&units=metric`)
         )
     }
 
 }
 
+// https://api.openweathermap.org/data/2.5/weather?id=630376&appid=5c7a7637fd830e172ecaa79e42f14f10&icon=01d
+
+// icon": "01d

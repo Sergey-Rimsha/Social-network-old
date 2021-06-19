@@ -27,9 +27,9 @@ export const setWeather = (weather) => {
 
     //  redux-thunk
 
-export const setWeatherThunk = (weather) => {
+export const setWeatherThunk = (cityName) => {
     return async (dispatch) => {
-        const response = await weatherAPI.getWeather(weather);
+        const response = await weatherAPI.getWeather(cityName);
         if (response.status === 200) {
             dispatch(setWeather(response.data))
             console.log('dispatch')

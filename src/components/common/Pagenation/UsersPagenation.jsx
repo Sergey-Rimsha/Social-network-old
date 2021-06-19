@@ -23,7 +23,7 @@ const UsersPagenation = ({totalUsersCount, pageSize, currentPage, onPageChanged}
     const PageNavigation = (p) => {
         if (p < currentPage + 3 && p > currentPage - 3) {
             return (
-                <span className={currentPage === p && style.selectedPage} 
+                <span key={p} className={currentPage === p && style.selectedPage} 
                 onClick={(e) => {onPageChanged(p)}}>{p}</span>
             )
         }

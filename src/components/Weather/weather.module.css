@@ -1,0 +1,40 @@
+.wraper {
+    width: 300px;
+    height: 300px;
+    background-color: gray;
+    margin: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+.wraperSearch {
+    border-style: solid red 2px;
+    height: 30px;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.searchInput {
+    height: auto;
+    width: auto;
+    margin-right: 15px;
+    display: flex;
+}
+
+.searchInput input {
+
+    height: auto;
+    border-radius: 5px;
+}
+
+.searchBtn {
+    display: flex;
+    width: 100px;
+    height: auto;
+}
+.searchBtn button {
+    width: 80px;
+}    

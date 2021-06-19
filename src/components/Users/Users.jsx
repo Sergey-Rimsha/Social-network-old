@@ -1,9 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 import UsersPagenation from '../common/Pagenation/UsersPagenation';
 import User from './User/User';
 
 
-let Users = (props) => {
+const Users = (props) => {
+
+    // const [currentPage, setCurrentPage] = useState(props.currentPage);
+    console.log(props.currentPage)
 
     return (
         <div>
