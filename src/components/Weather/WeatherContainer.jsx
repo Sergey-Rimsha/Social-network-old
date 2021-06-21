@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import {Field, reduxForm} from "redux-form";
 import {setWeatherThunk} from './../../redux/weatherReducer';
 import Preloader from '../common/Preloader/Preloader';
 import style from './weather.module.css';
+import { InputForm } from '../common/FormsControls/FormsControls';
 
 
 const WeatherContainer = (props) => {
@@ -14,6 +16,11 @@ const WeatherContainer = (props) => {
     const [temp, setTemp] = useState("props.weather.main.temp");
     const [iconWeather, setIconWeather] = useState('icon');
     const [citySearch, setCitySearch] = useState('');
+
+    const onSubmit = (formData) => {
+        props.setWeatherThunk(formData.cityName);
+        formData.cityName = '';
+    }
 
     useEffect(() => {
         try {
@@ -30,12 +37,6 @@ const WeatherContainer = (props) => {
         console.log('reloaded_useEffect')
     }, [props, weatherData]);
 
-    const getSearchCityName = () => {
-        props.setWeatherThunk(citySearch); 
-        console.log(citySearch) 
-        setCitySearch('') 
-    }
-
     if (!props.weather) {
         return (
             <Preloader />
@@ -44,12 +45,7 @@ const WeatherContainer = (props) => {
     return (
         <div className={style.wraper} >
             <div className={style.wraperSearch} >
-                <div className={style.searchInput} >
-                    <input onChange={(e) => setCitySearch(e.target.value)} value={citySearch} placeholder='city name' type="text" />
-                </div>
-                <div className={style.searchBtn}>
-                    <button onClick={() => getSearchCityName()} >Search</button>
-                </div>
+                <WeatherReduxForm onSubmit={onSubmit} />
             </div>
             <span>Weather City: </span>
             {nameCity || "city"}
@@ -71,3 +67,27 @@ const mapStateToProps = (state) => ({
 export default compose(
     connect(mapStateToProps, {setWeatherThunk}),
 )(WeatherContainer);
+
+
+
+const WeatherForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div className={style.searchInput} >
+                <Field name={'cityName'} 
+                    type={'text'} 
+                    component={InputForm} />
+                <div className={style.searchBtn}>
+                    <button>Search</button>
+                </div>
+            </div>            
+                
+        </form>
+    )
+}
+
+
+const WeatherReduxForm = reduxForm({
+    // a unique name for the form
+    form: 'Weather'
+  })(WeatherForm);
