@@ -28,20 +28,17 @@ const WeatherContainer = (props) => {
             setNameCity(props.weather.name);
             setTemp(props.weather.main.temp.toFixed(0));
             setIconWeather(`https://openweathermap.org/img/w/${props.weather.weather[0].icon}.png`)
-            console.log('try'); 
-            console.log(weatherData); 
         } catch {
-            props.setWeatherThunk('London') 
-            console.log('catch')
+            props.setWeatherThunk('Barysaw');
         }
-        console.log('reloaded_useEffect')
-    }, [props, weatherData]);
+    }, [props.weather]);
 
     if (!props.weather) {
         return (
             <Preloader />
         )
     }
+    
     return (
         <div className={style.wraper} >
             <div className={style.wraperSearch} >
@@ -61,7 +58,7 @@ const WeatherContainer = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    weather: state.weather.weather
+    weather: state.weather.weather,
 });
 
 export default compose(
@@ -85,7 +82,6 @@ const WeatherForm = (props) => {
         </form>
     )
 }
-
 
 const WeatherReduxForm = reduxForm({
     // a unique name for the form

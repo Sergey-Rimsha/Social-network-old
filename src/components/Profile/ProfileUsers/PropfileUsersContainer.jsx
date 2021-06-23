@@ -37,8 +37,7 @@ class ProfileUsersWrap extends React.Component {
                 <ProfileUsers 
                     {...this.props} 
                     isOwner={!this.props.match.params.userId}
-                    profile={this.props.profile}
-                    contactsError={this.props.contactsError}/>
+                    profile={this.props.profile} />
             </>
         )
     }
@@ -47,8 +46,7 @@ class ProfileUsersWrap extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    userId: state.auth.id,
-    contactsError: state.profilePage.contactsError
+    userId: state.auth.id
 });
 
 

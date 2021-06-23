@@ -1,20 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Field, reduxForm} from "redux-form";
-import { maxLengthCreator, validates } from '../../../../utils/validators/validators';
+// import { maxLengthCreator, validates } from '../../../../utils/validators/validators';
 import { InputForm, TextareaForm } from '../../../common/FormsControls/FormsControls';
 
-const maxLength12 = maxLengthCreator(150);
+// const maxLength12 = maxLengthCreator(150);
 
 const ProfileDataForm = (props) => {
 
-    let {profile, goToEditMode} = props;
-
-    let [editMode, setEditMode] = useState(true);
+    const {profile} = props;
 
     return (
-        <form onSubmit={props.handleSubmit}>  
+        <form onSubmit={props.handleSubmit}>
             <div>
                 <div>
+                    {props.error 
+                    && <div>{props.error}</div>} 
                     <span>fullName:</span>
                     <Field name={'fullName'} 
                         type={'text'} 
@@ -48,7 +48,7 @@ const ProfileDataForm = (props) => {
                 }
             </div>
             <div>
-                <button onClick={() => setEditMode(false)}>
+                <button>
                     save
                 </button>
             </div>
@@ -63,7 +63,6 @@ const Contacts = ({contactTitle, contactValue}) => {
             <span>
                 <Field name={`contacts.${contactTitle}`} 
                     type={'https'} 
-                    // placeholder={contactValue || 'https://...'} 
                     component={InputForm} />
             </span>
         </div>

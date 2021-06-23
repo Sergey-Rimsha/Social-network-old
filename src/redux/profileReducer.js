@@ -1,3 +1,4 @@
+import { stopSubmit, SubmissionError } from 'redux-form';
 import {profileAPI} from './../api/api';
 
 const NEW_POST = 'NEW-POST';
@@ -5,7 +6,6 @@ const CHENGE_POST = 'CHENGE-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
-const CONTACTS_ERROR = 'CONTACTS_ERROR';
 
 let initialState = {
     posts: [
@@ -16,7 +16,6 @@ let initialState = {
     ],
     profile: null,
     status: '',
-    contactsError: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -46,11 +45,6 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: {...state.profile, photos: action.photos }
-            }
-        case CONTACTS_ERROR:
-            return {
-                ...state,
-                contactsError: action.error
             }
         default:
             return state;
@@ -84,14 +78,6 @@ export const setSavePhoto = (photos) => {
         photos
     }
 }
-
-export const setContactsError = (error) => {
-    return {
-        type: CONTACTS_ERROR,
-        error
-    }
-}
-
 
 
     //  redux-thunk
@@ -133,11 +119,19 @@ export const saveProfile = (profile) => {
         const userId = getState().auth.id;
         const response = await profileAPI.putSaveProfile(profile);
 
-        if (response.data.resultCode === 0) {
+        // if (response.data.resultCode === 0) {
+        //     dispatch(setUserApi(userId))
+            
+        // } else {
+        //     dispatch(stopSubmit("Profile", {_error: response.data.messages[0]}))
+            
+        // }
+
+        try {
             dispatch(setUserApi(userId))
-            dispatch(setContactsError(null))
-        } else {
-            dispatch(setContactsError(response.data.messages[0]))
+        } catch {
+            dispatch(stopSubmit("Profile", {_error: response.data.messages[0]}))
+            throw new SubmissionError({_error: response.data.messages[0]})
         }
     }
 }

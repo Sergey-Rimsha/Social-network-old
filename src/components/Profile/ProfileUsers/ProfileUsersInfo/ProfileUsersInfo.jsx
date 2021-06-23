@@ -3,15 +3,11 @@ import ProfileReduxDataForm from './ProfileDataForm';
 
 const ProfileUsersInfo = (props) => {
 
-    let [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState(false);
 
     const onSubmit = (formData) => {
-        props.saveProfile(formData)
-            .then(() => {
-                console.log(props.contactsError);
-                // setEditMode(false);
-            }
-        );
+        props.saveProfile(formData);
+        setEditMode(false)
     }
 
     return (
